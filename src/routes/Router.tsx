@@ -1,16 +1,16 @@
 // routes/Router.tsx
 import { Navigate, Route, Routes } from "react-router-dom";
-import getNavLinks from "../data/NavLinksData";
-import LayoutBase from '../layouts/LayoutBase/LayoutBase';
-import HubPage from '../pages/Hub/Hub';
-import NotFound from "../pages/NotFound/NotFound";
-import Home from "../pages/panels/Manutencao/Home/Home";
+import getNavLinks from "../data/NavLinksData.tsx";
+import LayoutBase from "../layouts/LayoutBase/LayoutBase.tsx";
+import HubPage from "../pages/Hub/Hub.tsx";
+import NotFound from "../pages/NotFound/NotFound.tsx";
+import Home from "../pages/panels/Manutencao/Home/Home.tsx";
 
 function Router() {
   const navLinks = getNavLinks();
 
   return (
-      <Routes>
+    <Routes>
       {/* Redirecionamento raiz */}
       <Route path="/" element={<Navigate to="/hub" />} />
 
@@ -21,10 +21,10 @@ function Router() {
       <Route element={<LayoutBase />}>
         <Route path="/home" element={<Home />} />
         {navLinks
-          .filter(link => link.path.startsWith("/painel/"))
+          .filter((link) => link.path.startsWith("/painel/"))
           .map(({ path, element }) => (
             <Route key={path} path={path} element={element} />
-        ))}
+          ))}
       </Route>
 
       {/* Página 404 */}

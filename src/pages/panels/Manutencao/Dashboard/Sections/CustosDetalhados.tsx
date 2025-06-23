@@ -1,8 +1,8 @@
 // Funções dos Gráficos
-import Dispersal from "../../../../../components/Charts/DispersalChart";
-import HeatMap from "../../../../../components/Charts/HeatMapChar";
-import StackedBar from "../../../../../components/Charts/StackedChar";
-import VerticalBar from "../../../../../components/Charts/VerticalChar";
+import Dispersal from "../../../../../components/Charts/DispersalChart.tsx";
+import HeatMap from "../../../../../components/Charts/HeatMapChar.tsx";
+import StackedBar from "../../../../../components/Charts/StackedChar.tsx";
+import VerticalBar from "../../../../../components/Charts/VerticalChar.tsx";
 
 export default function CustosDetalhados() {
   return (
