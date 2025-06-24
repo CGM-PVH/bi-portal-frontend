@@ -1,9 +1,10 @@
-// exemplo de uso no final do componente
+// local do grafico: src/components/Charts/BarChart.tsx
+// grafico de barras
 import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
 type DataItem = {
   label: string;
-  [ key: string ]: string | number;
+  [key: string]: string | number;
 };
 
 type BarChartProps = {
@@ -16,7 +17,7 @@ type BarChartProps = {
   showLegend?: boolean;
   height: number
   width: number
-  className:string
+  className: string
 };;
 
 export const BarChartRecharts = ({
@@ -31,7 +32,7 @@ export const BarChartRecharts = ({
   showLegend,
   className
 }: BarChartProps) => {
-  const dataKeys = keys ?? Object.keys(data[ 0 ] ?? {}).filter(k => k !== 'label');
+  const dataKeys = keys ?? Object.keys(data[0] ?? {}).filter(k => k !== 'label');
 
   return (
     <div
@@ -57,7 +58,7 @@ export const BarChartRecharts = ({
             <Bar
               key={key}
               dataKey={key}
-              fill={colors[ i % colors.length ]}
+              fill={colors[i % colors.length]}
               name={key}
             />
           ))}
@@ -79,7 +80,7 @@ export const VerticalBarChartRecharts = ({
   showLegend,
   className
 }: BarChartProps) => {
-  const dataKeys = keys ?? Object.keys(data[ 0 ] ?? {}).filter(k => k !== 'label');
+  const dataKeys = keys ?? Object.keys(data[0] ?? {}).filter(k => k !== 'label');
 
   return (
     <div
@@ -105,7 +106,7 @@ export const VerticalBarChartRecharts = ({
             <Bar
               key={key}
               dataKey={key}
-              fill={colors[ i % colors.length ]}
+              fill={colors[i % colors.length]}
               name={key}
             />
           ))}
@@ -115,23 +116,4 @@ export const VerticalBarChartRecharts = ({
   )
 }
 
-// Exemplo do componente e sua database
-
-// const sampleDataBarChart = [
-//   { label: 'Janeiro', vendas: 300, lucro: 240, margemErro: 20 },
-//   { label: 'Fevereiro', vendas: 350, lucro: 221, margemErro: 40 },
-//   { label: 'Março', vendas: 100, lucro: 29, margemErro: 200 },
-//   { label: 'Março', vendas: 250, lucro: 129, margemErro: 70 },
-//   { label: 'Março', vendas: 200, lucro: 246, margemErro: 120 },
-// ];
-
-{/* <BarChartRecharts
-  data={sampleDataBarChart}
-  title={"Gráfico de barras com Rechart"}
-  showLegend={true}
-  sizeLegend={12}
-  sizeTitle={20}
-  height={230}
-  width={350}
-  colors={[ '#61dafb', '#dd1b16', '#FFBB28' ]}
-/> */}
+export default BarChartRecharts

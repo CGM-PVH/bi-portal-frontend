@@ -1,3 +1,5 @@
+//local: ./src/components/Charts/StackedChar.tsx
+// gráfico de barras empilhadas
 import {
   BarChart,
   Bar,

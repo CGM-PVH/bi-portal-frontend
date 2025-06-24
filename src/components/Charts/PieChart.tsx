@@ -1,4 +1,5 @@
-// exemplo de uso no final do componente
+// local: src/components/Charts/PieChart.tsx
+// Grafico de Pizza
 import * as d3 from 'd3';
 import { useEffect, useRef } from 'react';
 import { Cell, Legend, Pie, PieChart as RePieChart, ResponsiveContainer, Tooltip } from 'recharts';
@@ -24,7 +25,7 @@ type PieChartProps = {
 export const PieChartRecharts = ({
   title = "Titulo do Gráfico",
   data,
-  colors = [ '#8884d8', '#82ca9d', '#ffc658', '#ff8042' ],
+  colors = ['#8884d8', '#82ca9d', '#ffc658', '#ff8042'],
   chartHeight = 200,
   chartWidth = 350,
   sizeLegend = 16,
@@ -58,7 +59,7 @@ export const PieChartRecharts = ({
             label={({ percent, name }) => `${name}: ${(percent * 100).toFixed(0)}%`}
           >
             {data.map((_, index) => (
-              <Cell key={`cell-${index}`} fill={colors[ index % colors.length ]} />
+              <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
             ))}
           </Pie>
           <Tooltip />
@@ -112,7 +113,7 @@ export const PieChartD3 = ({
       .enter()
       .append('path')
       .attr('d', arc as never)
-      .attr('fill', (_, i) => colors[ i % colors.length ])
+      .attr('fill', (_, i) => colors[i % colors.length])
       .attr('stroke', 'white')
       .attr('stroke-width', 2)
       .append('title')
@@ -128,7 +129,7 @@ export const PieChartD3 = ({
       .attr('fill', 'white')
       .attr('font-size', '10px')
       .text(d => `${Math.round((d.value / d3.sum(data, d => d.value)) * 100)}%`);
-  }, [ data, colors, radius, donut, chartWidth, chartHeight ]);
+  }, [data, colors, radius, donut, chartWidth, chartHeight]);
 
   return (
     <div className={`w-fit flex flex-col items-center border border-amber-400 ${className}`}>
@@ -147,7 +148,7 @@ export const PieChartD3 = ({
             <li key={i} className="flex items-center space-x-1">
               <span
                 className="w-3 h-3 inline-block rounded"
-                style={{ backgroundColor: colors[ i % colors.length ] }}
+                style={{ backgroundColor: colors[i % colors.length] }}
               />
               <span>{item.label}</span>
             </li>
@@ -158,36 +159,4 @@ export const PieChartD3 = ({
   );
 };
 
-// Exemplo de database, e componente
-
-// const sampleDataPieChart = [
-//   { label: 'React', value: 40 },
-//   { label: 'Vue', value: 30 },
-//   { label: 'Angular', value: 20 },
-//   { label: 'Svelte', value: 10 },
-// ];
-
-{/* <PieChartRecharts
-  data={sampleDataPieChart}
-  donut={true}
-  title="Gráfico de Teste com D3js"
-  showLegend={true}
-  sizeLegend={12}
-  sizeTitle={24}
-  height={230}
-  width={350}
-  colors={[ '#0088FE', '#00C49F', '#FFBB28', '#ff3e00' ]}
-/>  */}
-
-
-{/* <PieChartD3
-  data={sampleDataPieChart}
-  donut={true}
-  title="Gráfico de Teste com D3js"
-  showLegend={true}
-  sizeLegend={12}
-  sizeTitle={24}
-  height={230}
-  width={350}
-  colors={[ '#0088FE', '#00C49F', '#FFBB28', '#ff3e00' ]}
-/> */}
+export default PieChartRecharts;

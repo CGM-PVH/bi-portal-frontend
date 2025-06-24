@@ -1,31 +1,34 @@
 // Funções dos Gráficos
-import Dispersal from "../../../../../components/Charts/DispersalChart.tsx";
-import HeatMap from "../../../../../components/Charts/HeatMapChar.tsx";
-import StackedBar from "../../../../../components/Charts/StackedChar.tsx";
-import VerticalBar from "../../../../../components/Charts/VerticalChar.tsx";
+import React, { Suspense } from "react";
+
+const Dispersal = React.lazy(() => import("../../../../../components/Charts/DispersalChart.tsx"));
+const HeatMap = React.lazy(() => import("../../../../../components/Charts/HeatMapChar.tsx"));
+const StackedBar = React.lazy(() => import("../../../../../components/Charts/StackedChar.tsx"));
+const VerticalBar = React.lazy(() => import("../../../../../components/Charts/VerticalChar.tsx"));
 
 export default function CustosDetalhados() {
+
   return (
     <div className="mt-4 mb-4 space-y-10">
       {/* Barras verticais */}
-      <div>
+      <Suspense fallback={<div>Carregando gráfico de barras...</div>}>
         <VerticalBar />
-      </div>
+      </Suspense>
 
       {/* Barras empilhadas */}
-      <div>
+      <Suspense fallback={<div>Carregando gráfico de barras...</div>}>
         <StackedBar />
-      </div>
+      </Suspense>
 
       {/* Gráfico de Dispersão */}
-      <div>
+      <Suspense fallback={<div>Carregando gráfico de dispersão...</div>}>
         <Dispersal />
-      </div>
+      </Suspense>
 
       {/* Mapa de Calor */}
-      <div>
+      <Suspense fallback={<div>Carregando gráfico de mapa de calor...</div>}>
         <HeatMap />
-      </div>
+      </Suspense>
     </div>
   );
 }

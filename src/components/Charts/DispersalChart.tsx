@@ -1,3 +1,6 @@
+//local do grafico: src/components/Charts/DispersalChart.tsx
+//grafico de dispersão
+
 import {
   XAxis,
   YAxis,
@@ -11,7 +14,7 @@ import { dadosDispersao } from "../../data/dataCharts/CharDispersal";
 import { useEffect } from "react";
 export default function Dispersal() {
   useEffect(() => {
-    const handleResize = () => {};
+    const handleResize = () => { };
 
     handleResize(); // inicializa
     window.addEventListener("resize", handleResize); // escuta resize

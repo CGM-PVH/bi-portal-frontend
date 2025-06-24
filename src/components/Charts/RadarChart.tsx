@@ -1,4 +1,6 @@
-// exemplo de uso no final do componente
+//local: src/components/Charts/RadarChart.tsx
+// Grafico de Radar
+
 import {
   Legend,
   PolarAngleAxis,
@@ -11,7 +13,7 @@ import {
 
 type DataItem = {
   label: string;
-  [ key: string ]: string | number;
+  [key: string]: string | number;
 };
 
 type RadarChartProps = {
@@ -39,7 +41,7 @@ export const RadarChartRecharts = ({
   width,
   className
 }: RadarChartProps) => {
-  const dataKeys = keys ?? Object.keys(data[ 0 ] ?? {}).filter(k => k !== 'label');
+  const dataKeys = keys ?? Object.keys(data[0] ?? {}).filter(k => k !== 'label');
 
   return (
     <div className={`flex flex-col items-center justify-center py-3 ${className}`} style={{ width, height }}>
@@ -57,8 +59,8 @@ export const RadarChartRecharts = ({
               key={key}
               name={key}
               dataKey={key}
-              stroke={colors[ i % colors.length ]}
-              fill={colors[ i % colors.length ]}
+              stroke={colors[i % colors.length]}
+              fill={colors[i % colors.length]}
               fillOpacity={0.4}
             />
           ))}
@@ -71,54 +73,3 @@ export const RadarChartRecharts = ({
   );
 };
 
-// Exemplo de database, e componente
-
-// const radarData = [
-//   {
-//     label: 'Math',
-//     A: 120,
-//     B: 110,
-//     fullMark: 150,
-//   },
-//   {
-//     label: 'Chinese',
-//     A: 98,
-//     B: 130,
-//     fullMark: 150,
-//   },
-//   {
-//     label: 'English',
-//     A: 86,
-//     B: 130,
-//     fullMark: 150,
-//   },
-//   {
-//     label: 'Geography',
-//     A: 99,
-//     B: 100,
-//     fullMark: 150,
-//   },
-//   {
-//     label: 'Physics',
-//     A: 85,
-//     B: 90,
-//     fullMark: 150,
-//   },
-//   {
-//     label: 'History',
-//     A: 65,
-//     B: 85,
-//     fullMark: 150,
-//   },
-// ];
-
-// <RadarChartRecharts
-//   title="Radar Chart"
-//   data={radarData}
-//   height={300}
-//   width={500}
-//   showLegend={true}
-//   sizeLegend={12}
-//   sizeTitle={18}
-//   colors={[ '#8884d8', '#82ca9d' ]}
-// />

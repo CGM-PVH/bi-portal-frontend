@@ -1,4 +1,5 @@
-// exemplo de uso no final do componente
+// local: ./src/components/Charts/ScatterChart.tsx
+// garfico de dispersão
 import {
   CartesianGrid,
   Legend,
@@ -36,13 +37,13 @@ type ScatterChartProps = {
   xUnit?: string;
   yUnit?: string;
   zUnit?: string;
-  zRange?: [ number, number ];
+  zRange?: [number, number];
   xTickInterval?: number;
   yTickInterval?: number;
   xTicks?: number[];
   yTicks?: number[];
-  xData?: [ number, number ];
-  yData?: [ number, number ];
+  xData?: [number, number];
+  yData?: [number, number];
   xTickMargin?: number;
   yTickMargin?: number;
   className?: string;
@@ -62,7 +63,7 @@ export const ScatterChartRecharts = ({
   xUnit = '',
   yUnit = '',
   zUnit = '',
-  zRange = [ 50, 150 ],
+  zRange = [50, 150],
   xTickInterval,
   yTickInterval,
   xTicks,
@@ -84,16 +85,16 @@ export const ScatterChartRecharts = ({
   const allX = data.flatMap(d => d.data.map(p => p.x));
   const allY = data.flatMap(d => d.data.map(p => p.y));
 
-  const xMin = xData?.[ 0 ] ?? Math.min(...allX);
-  const xMax = xData?.[ 1 ] ?? Math.max(...allX);
-  const yMin = yData?.[ 0 ] ?? Math.min(...allY);
-  const yMax = yData?.[ 1 ] ?? Math.max(...allY);
+  const xMin = xData?.[0] ?? Math.min(...allX);
+  const xMax = xData?.[1] ?? Math.max(...allX);
+  const yMin = yData?.[0] ?? Math.min(...allY);
+  const yMax = yData?.[1] ?? Math.max(...allY);
 
-  const xDomain: [ number, number ] = [ xMin - xTickMargin, xMax + xTickMargin ];
-  const yDomain: [ number, number ] = [ yMin - yTickMargin, yMax + yTickMargin ];
+  const xDomain: [number, number] = [xMin - xTickMargin, xMax + xTickMargin];
+  const yDomain: [number, number] = [yMin - yTickMargin, yMax + yTickMargin];
 
-  const xTickValues = xTicks ?? (xTickInterval ? generateTicks(xDomain[ 0 ], xDomain[ 1 ], xTickInterval) : undefined);
-  const yTickValues = yTicks ?? (yTickInterval ? generateTicks(yDomain[ 0 ], yDomain[ 1 ], yTickInterval) : undefined);
+  const xTickValues = xTicks ?? (xTickInterval ? generateTicks(xDomain[0], xDomain[1], xTickInterval) : undefined);
+  const yTickValues = yTicks ?? (yTickInterval ? generateTicks(yDomain[0], yDomain[1], yTickInterval) : undefined);
 
 
   return (
@@ -113,7 +114,7 @@ export const ScatterChartRecharts = ({
             dataKey="x"
             name={xAxisLabel}
             unit={xUnit}
-            domain={[ xMin, xMax ]}
+            domain={[xMin, xMax]}
             ticks={xTickValues}
             label={{
               value: xAxisLabel,
@@ -127,7 +128,7 @@ export const ScatterChartRecharts = ({
             dataKey="y"
             name={yAxisLabel}
             unit={yUnit}
-            domain={[ yMin, yMax ]}
+            domain={[yMin, yMax]}
             ticks={yTickValues}
             label={{
               value: yAxisLabel,
@@ -159,7 +160,7 @@ export const ScatterChartRecharts = ({
               key={dataset.name}
               name={dataset.name}
               data={dataset.data}
-              fill={colors[ index % colors.length ]}
+              fill={colors[index % colors.length]}
             />
           ))}
         </ScatterChart>
@@ -167,49 +168,3 @@ export const ScatterChartRecharts = ({
     </div>
   );
 };
-// Exemplo de database, e componente
-
-// const data01 = [
-//   { x: 150, y: 50, z: 200 },
-//   { x: 163, y: 64, z: 260 },
-//   { x: 170, y: 80, z: 400 },
-//   { x: 143, y: 45, z: 200 },
-//   { x: 169, y: 75, z: 260 },
-//   { x: 175, y: 89, z: 400 },
-//   { x: 157, y: 64, z: 200 },
-//   { x: 166, y: 69, z: 260 },
-//   { x: 181, y: 97, z: 400 },
-// ];
-
-// const data02 = [
-//   { x: 165, y: 68, z: 240 },
-//   { x: 176, y: 94, z: 220 },
-//   { x: 149, y: 58, z: 250 },
-//   { x: 181, y: 86, z: 240 },
-//   { x: 171, y: 96, z: 220 },
-//   { x: 147, y: 48, z: 250 },
-//   { x: 169, y: 86, z: 240 },
-//   { x: 165, y: 90, z: 220 },
-//   { x: 158, y: 68, z: 250 },
-// ];
-
-// const sampleScatterData = [
-//   { name: 'Escola A', data: data01 },
-//   { name: 'Escola B', data: data02 },
-// ];
-
-// <ScatterChartRecharts
-//   title="Exemplo de Scatter Chart"
-//   data={sampleScatterData}
-//   xAxisLabel="Altura"
-//   yAxisLabel="Peso"
-//   zAxisLabel="Pontuação"
-//   xUnit="cm"
-//   yUnit="kg"
-//   zUnit="pts"
-//   xTickInterval={8}
-//   yTickInterval={10}
-//   width={600}
-//   height={300}
-//   colors={[ '#8884d8', '#82ca9d' ]}
-// />

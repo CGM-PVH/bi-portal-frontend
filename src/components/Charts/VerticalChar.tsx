@@ -1,3 +1,5 @@
+//local: ./src/components/Charts/VerticalChar.tsx
+// gráfico de barras verticais
 import {
   BarChart,
   Bar,

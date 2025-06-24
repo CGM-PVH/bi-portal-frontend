@@ -1,4 +1,6 @@
 // src/components/Table/GenericTableFilters.tsx
+// filtros de pesquisa
+
 import type { FilterConfig } from './GenericTable';
 
 interface GenericTableFiltersProps<T extends Record<string, unknown>> {

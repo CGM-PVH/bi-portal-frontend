@@ -1,3 +1,6 @@
+//local: .src/data/dataCharts/CharHeatMap
+//dados para HeatMap
+
 export const dadosMapaCalor = [
   { dia: "Segunda", hora: "08h", freq: 5 },
   { dia: "Segunda", hora: "09h", freq: 10 },
