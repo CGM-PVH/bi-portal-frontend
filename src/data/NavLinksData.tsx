@@ -1,17 +1,18 @@
 // src/data/navLinks.tsx
+import { lazy } from "react";
 import { BarChart2, Database, House } from "lucide-react";
 import type { NavLinkInterface } from "../interfaces/navLinksInterface";
-import Dashboard from '../pages/panels/Manutencao/Dashboard/Dashboard';
-import DataSource from '../pages/panels/Manutencao/DataSource/DataSource';
-import Home from '../pages/panels/Manutencao/Home/Home';
 
-import DashboardDiarias from '../pages/panels/Diarias/Dashboard/Dashboard';
-import DataSourceDiarias from '../pages/panels/Diarias/DataSource/DataSource';
-import HomeDiarias from '../pages/panels/Diarias/Home/Home';
+// Lazy loading das páginas
+const Dashboard = lazy(() => import('../pages/panels/Manutencao/Dashboard/Dashboard'));
+const DataSource = lazy(() => import('../pages/panels/Manutencao/DataSource/DataSource'));
+const Home = lazy(() => import('../pages/panels/Manutencao/Home/Home'));
+
+const DashboardDiarias = lazy(() => import('../pages/panels/Diarias/Dashboard/Dashboard'));
+const DataSourceDiarias = lazy(() => import('../pages/panels/Diarias/DataSource/DataSource'));
+const HomeDiarias = lazy(() => import('../pages/panels/Diarias/Home/Home'));
 
 const navLinks: NavLinkInterface[] = [
-
-  // Agrupamento dos painéis
   {
     title: "Início",
     path: "/painel/manutencao/home",
@@ -54,8 +55,8 @@ const navLinks: NavLinkInterface[] = [
     element: <DataSourceDiarias />,
     group: "diarias",
   },
-
 ];
+
 export default function getNavLinks() {
   return navLinks;
 }

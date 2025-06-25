@@ -1,4 +1,5 @@
 // src/components/Table/GenericTable.tsx
+// filtros dinâmicos
 import { useState } from 'react';
 import GenericTableFilters from './GenericTableFilters';
 

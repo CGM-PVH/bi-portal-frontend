@@ -1,22 +1,26 @@
-import { LineChartRecharts } from "../../../../../components/Charts/LineChart";
-import { PieChartRecharts } from "../../../../../components/Charts/PieChart";
+import React, { Suspense } from "react";
 
-export const OverView = ({ isMobile }: { isMobile: boolean }) => {
+const LineChartRecharts = React.lazy(() => import("../../../../../components/Charts/LineChart.tsx"));
+const PieChartRecharts = React.lazy(() => import("../../../../../components/Charts/PieChart.tsx"));
+export const OverView: React.FC<{ isMobile: boolean }> = ({ isMobile }: { isMobile: boolean }) => {
   const screenMode = ["bg-slate-800", "bg-white"];
   const x = 1;
   return (
     <>
-      <h1 
-      className='text-2xl font-bold bg-official-yellow rounded-md p-2 mb-4 text-left'
+      <h1
+        className='text-2xl font-bold bg-official-yellow rounded-md p-2 mb-4 text-left'
       >VISÃO GERAL</h1>
-      <OverViewKpiCards className={screenMode[x]==='bg-white'? 'bg-white text-black': 'bg-slate-800 text-white'} isMobile={isMobile}/>
+      <OverViewKpiCards className={screenMode[x] === 'bg-white' ? 'bg-white text-black' : 'bg-slate-800 text-white'} isMobile={isMobile} />
       <div className={`mb-4 grid gap-4 ${isMobile ? 'grid-cols-1' : 'grid-cols-5'}`}>
+
         <div className={isMobile ? '' : 'col-span-2'}>
-          <OverViewPizzaDistribution className={screenMode[x]+" min-w-fit"} isMobile={isMobile} />
+          <OverViewPizzaDistribution className={screenMode[x] + " min-w-fit"} isMobile={isMobile} />
         </div>
+
         <div className={isMobile ? '' : 'col-span-3'}>
           <OverViewTimeLine className={screenMode[x]} />
         </div>
+
       </div>
     </>
   );
@@ -60,21 +64,21 @@ const OverViewKpiCards = ({
 
   return (
     <>
-    <div className={`mb-4 grid ${isMobile? `grid-cols-2 gap-2` : `grid-cols-4 gap-4`}`}>
-      {/* Generate KPI Cards */}
-      {kpiCardsData.map((card, index) => (
-        <div key={index} className={`rounded-lg ${className} ${isMobile?'p-4':'p-8'}  shadow-md flex flex-col items-ce`}>
-          <p className="text-md font-medium">{card.title}</p>
-          <p className="text-3xl font-semibold ">{card.value}</p>
-          <span className={`text-md font-medium w-fit rounded-md p-1 bg-emerald-500 text-emerald-950`}>{card.change}</span>
-        </div>
-      ))}
-    </div>
+      <div className={`mb-4 grid ${isMobile ? `grid-cols-2 gap-2` : `grid-cols-4 gap-4`}`}>
+        {/* Generate KPI Cards */}
+        {kpiCardsData.map((card, index) => (
+          <div key={index} className={`rounded-lg ${className} ${isMobile ? 'p-4' : 'p-8'}  shadow-md flex flex-col items-ce`}>
+            <p className="text-md font-medium">{card.title}</p>
+            <p className="text-3xl font-semibold ">{card.value}</p>
+            <span className={`text-md font-medium w-fit rounded-md p-1 bg-emerald-500 text-emerald-950`}>{card.change}</span>
+          </div>
+        ))}
+      </div>
     </>
   );
 };
 
-const OverViewTimeLine = ({className}:{className:string}) => {
+const OverViewTimeLine = ({ className }: { className: string }) => {
   const sampleDataLineChart = [
     {
       label: "2022",
@@ -136,21 +140,24 @@ const OverViewPizzaDistribution = ({
 
   return (
     <>
-    <h2 className='text-xl font-semibold bg-chart-title rounded-t-md p-2 text-center'>Proporção por Tipo de OS</h2>
-<div className={`${className} p-4 rounded-b-lg shadow-md ${isMobile? 'max-h-72':'max-h-96'} h-full overflow-y-auto flex items-center justify-center`}>
-      <PieChartRecharts
-        data={sampleDataPieChart}
-        donut={true}
-        title=""
-        showLegend={true}
-        sizeLegend={12}
-        sizeTitle={24}
-        chartHeight={isMobile? 300:350}
-        chartWidth={isMobile? 125:350}
-        colors={[ '#0088FE', '#00C49F', '#FFBB28', '#ff3e00' ]}
-        className='text-white w-full h-full'
-      />
-    </div>
+      <h2 className='text-xl font-semibold bg-chart-title rounded-t-md p-2 text-center'>Proporção por Tipo de OS</h2>
+      <div className={`${className} p-4 rounded-b-lg shadow-md ${isMobile ? 'max-h-72' : 'max-h-96'} h-full overflow-y-auto flex items-center justify-center`}>
+        <Suspense fallback={<div>Carregando gráfico de pizza...</div>}>
+          <PieChartRecharts
+            data={sampleDataPieChart}
+            donut={true}
+            title=""
+            showLegend={true}
+            sizeLegend={12}
+            sizeTitle={24}
+            chartHeight={isMobile ? 300 : 350}
+            chartWidth={isMobile ? 125 : 350}
+            colors={['#0088FE', '#00C49F', '#FFBB28', '#ff3e00']}
+            className='text-white w-full h-full'
+          />
+        </Suspense>
+      </div>
     </>
   );
 };
+export default OverView;

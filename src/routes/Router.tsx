@@ -1,35 +1,38 @@
 // routes/Router.tsx
 import { Navigate, Route, Routes } from "react-router-dom";
-import getNavLinks from "../data/NavLinksData";
-import LayoutBase from '../layouts/LayoutBase/LayoutBase';
-import HubPage from '../pages/Hub/Hub';
-import NotFound from "../pages/NotFound/NotFound";
-import Home from "../pages/panels/Manutencao/Home/Home";
+import { Suspense } from "react";
+import getNavLinks from "../data/NavLinksData.tsx";
+import LayoutBase from "../layouts/LayoutBase/LayoutBase.tsx";
+import HubPage from "../pages/Hub/Hub.tsx";
+import NotFound from "../pages/NotFound/NotFound.tsx";
+import Home from "../pages/panels/Manutencao/Home/Home.tsx";
 
 function Router() {
   const navLinks = getNavLinks();
 
   return (
+    <Suspense fallback={<div className="p-4 text-center">Carregando página...</div>}>
       <Routes>
-      {/* Redirecionamento raiz */}
-      <Route path="/" element={<Navigate to="/hub" />} />
+        {/* Redirecionamento raiz */}
+        <Route path="/" element={<Navigate to="/hub" />} />
 
-      {/* Página do hub - FORA DO LAYOUT */}
-      <Route path="/hub" element={<HubPage />} />
+        {/* Página do hub - FORA DO LAYOUT */}
+        <Route path="/hub" element={<HubPage />} />
 
-      {/* Demais rotas COM layout base (com sidebar/navbar) */}
-      <Route element={<LayoutBase />}>
-        <Route path="/home" element={<Home />} />
-        {navLinks
-          .filter(link => link.path.startsWith("/painel/"))
-          .map(({ path, element }) => (
-            <Route key={path} path={path} element={element} />
-        ))}
-      </Route>
+        {/* Demais rotas COM layout base (com sidebar/navbar) */}
+        <Route element={<LayoutBase />}>
+          <Route path="/home" element={<Home />} />
+          {navLinks
+            .filter((link) => link.path.startsWith("/painel/"))
+            .map(({ path, element }) => (
+              <Route key={path} path={path} element={element} />
+            ))}
+        </Route>
 
-      {/* Página 404 */}
-      <Route path="/*" element={<NotFound />} />
-    </Routes>
+        {/* Página 404 */}
+        <Route path="/*" element={<NotFound />} />
+      </Routes>
+    </Suspense>
   );
 }
 

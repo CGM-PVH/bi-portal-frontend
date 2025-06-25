@@ -1,39 +1,69 @@
+import { useOutletContext } from "react-router-dom";
+import React, { Suspense } from "react";
 
-import InvoicesSection from "./Sections/InvoicesSection";
-import { useOutletContext } from 'react-router-dom';
-import CustosDetalhados from './Sections/CustosDetalhados';
-import FleetSection from './Sections/FleetSection';
-import { OverView } from './Sections/OverView';
-import SuppliersSection from './Sections/Supplierssection';
+// Lazy loading de todas as seções
+const OverView = React.lazy(() => import("./Sections/OverView"));
+const CustosDetalhados = React.lazy(() => import("./Sections/CustosDetalhados"));
+const InvoicesSection = React.lazy(() => import("./Sections/InvoicesSection"));
+const FleetSection = React.lazy(() => import("./Sections/FleetSection"));
+const SuppliersSection = React.lazy(() => import("./Sections/Supplierssection"));
 
 export default function Dashboard() {
   const isMobile = useOutletContext<boolean>();
+  const render = true;
+  const showQuemFez = false;
 
-  console.log('Dashboard received isMobile:', isMobile);
-  const render = true
-  const showQuemFez = false
-  return(
-   <>
-    {/* Sections as sub-components */}
-    {QuemFez('Jhonatan', showQuemFez)}
-    <OverView isMobile={isMobile}/>
-    {QuemFez('Filipe Farias', showQuemFez)}
-    {!render?'':<CustosDetalhados/>}
-    {QuemFez('Filipe Farias', showQuemFez)}
-    {!render?'':<InvoicesSection/>}
-    {QuemFez('Jhonatan', showQuemFez)}
-    {!render?'':<FleetSection isMobile={isMobile} className={''}/>}
-    {QuemFez('Jhonatan', showQuemFez)}
-    {!render?'':<SuppliersSection isMobile={isMobile}/>}
-   </>
-  )
+  return (
+    <>
+      {QuemFez("Jhonatan", showQuemFez)}
+
+      <Suspense fallback={<div>Carregando visão geral...</div>}>
+        <OverView isMobile={isMobile} />
+      </Suspense>
+
+      {QuemFez("Filipe Farias", showQuemFez)}
+
+      {!render ? "" : (
+        <Suspense fallback={<div>Carregando custos detalhados...</div>}>
+          <CustosDetalhados />
+        </Suspense>
+      )}
+
+      {QuemFez("Filipe Farias", showQuemFez)}
+
+      {!render ? "" : (
+        <Suspense fallback={<div>Carregando faturas...</div>}>
+          <InvoicesSection />
+        </Suspense>
+      )}
+
+      {QuemFez("Jhonatan", showQuemFez)}
+
+      {!render ? "" : (
+        <Suspense fallback={<div>Carregando frota...</div>}>
+          <FleetSection isMobile={isMobile} className={""} />
+        </Suspense>
+      )}
+
+      {QuemFez("Jhonatan", showQuemFez)}
+
+      {!render ? "" : (
+        <Suspense fallback={<div>Carregando fornecedores...</div>}>
+          <SuppliersSection isMobile={isMobile} />
+        </Suspense>
+      )}
+    </>
+  );
 }
 
 const QuemFez = (text: string, show: boolean) => {
   return (
     <>
-      {show? <h1 className='bg-red-500 rounded-md my-5 p-2 justify-center font-bold'>{`Seção desevolvida por ${text}`}</h1> : ''}
+      {show ? (
+        <h1 className="bg-red-500 rounded-md my-5 p-2 justify-center font-bold">
+          {`Seção desenvolvida por ${text}`}
+        </h1>
+      ) : ""}
     </>
-  )
-}
-
+  );
+};

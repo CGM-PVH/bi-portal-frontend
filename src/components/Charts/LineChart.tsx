@@ -1,4 +1,5 @@
-// exemplo de uso no final do componente
+// local: src/components/Charts/LineChart.tsx
+// grafico de linha
 import {
   CartesianGrid,
   Legend,
@@ -80,44 +81,4 @@ export const LineChartRecharts = ({
   );
 };
 
-// Exemplo do componente e sua database
-
-// const sampleDataLineChart = [
-//   {
-//     "label": "2022",
-//     "uv": 4000,
-//     "pv": 2400,
-//     "amt": 2400
-//   },
-//   {
-//     "label": "2023",
-//     "uv": 3000,
-//     "pv": 1398,
-//     "amt": 2210
-//   },
-//   {
-//     "label": "2024",
-//     "uv": 2000,
-//     "pv": 9800,
-//     "amt": 2290
-//   },
-//   {
-//     "label": "2025",
-//     "uv": 2780,
-//     "pv": 3908,
-//     "amt": 2000
-//   },
-// ]
-
-{
-  /* <LineChartRecharts
-  data={sampleDataLineChart}
-  title="Gráfico de Linhas"
-  showLegend={true}
-  sizeLegend={16}
-  sizeTitle={20}
-  height={300}
-  width={400}
-  colors={[ "#8884d8", "#82ca9d", "#FFBB28" ]}
-/> */
-}
+export default LineChartRecharts;
