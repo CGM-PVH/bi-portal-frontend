@@ -1,7 +1,6 @@
 import React, { Suspense } from "react";
 import { fleetBarsData } from "../../data/fleet/FleetBarsData";
 import ChartContainer from "./ChartContainer";
-
 const BarChartRecharts = React.lazy(() => import("../Charts/BarChart"));
 
 const FleetBars = ({ isMobile, className }: { isMobile: boolean; className: string; }) => {

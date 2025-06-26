@@ -15,7 +15,7 @@ const VerticalBar = React.memo(() => {
 
   return (
     <>
-      <h2 className="text-xl font-semibold bg-lime-500 rounded-t-md mb-0 p-2">
+      <h2 className="text-xl mt-12 font-semibold bg-lime-500 rounded-t-md mb-0 p-2">
         Gasto Por Unidade
       </h2>
       <div className="p-8 bg-white space-y-10 rounded-b-2xl">
