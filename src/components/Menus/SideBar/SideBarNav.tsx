@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import getNavLinks from '../../data/NavLinksData';
+import getNavLinks from '../../../data/NavLinksData';
 import { NavLinkItem } from "../NavLinkItem/NavLinkItem";
 
 export function SideBarNav({ isOpen }: { isOpen: boolean }) {

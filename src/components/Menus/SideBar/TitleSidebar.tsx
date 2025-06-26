@@ -1,6 +1,6 @@
 import { X } from "lucide-react";
 import { useLocation } from "react-router-dom";
-import { getPanelTitle } from "../../utils/getPanelTitle";
+import { getPanelTitle } from "../../../utils/getPanelTitle";
 
 export default function TitleSidebar({ closeSideBar }: { closeSideBar: (state: boolean) => void }) {
   const location = useLocation();

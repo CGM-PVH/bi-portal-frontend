@@ -11,7 +11,7 @@ function Router() {
   const navLinks = getNavLinks();
 
   return (
-    <Suspense fallback={<div className="p-4 text-center">Carregando página...</div>}>
+    <Suspense fallback={<div className=" text-center">Carregando página...</div>}>
       <Routes>
         {/* Redirecionamento raiz */}
         <Route path="/" element={<Navigate to="/hub" />} />
