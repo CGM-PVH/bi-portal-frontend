@@ -1,5 +1,6 @@
 // local: src/components/Charts/PieChart.tsx
 // Grafico de Pizza
+
 import * as d3 from 'd3';
 import { useEffect, useRef } from 'react';
 import { Cell, Legend, Pie, PieChart as RePieChart, ResponsiveContainer, Tooltip } from 'recharts';
@@ -26,10 +27,10 @@ export const PieChartRecharts = ({
   title = "Titulo do Gráfico",
   data,
   colors = ['#8884d8', '#82ca9d', '#ffc658', '#ff8042'],
-  chartHeight = 200,
-  chartWidth = 350,
-  sizeLegend = 16,
-  sizeTitle = 16,
+  chartHeight = 25,
+  chartWidth = 25,
+  sizeLegend = 25,
+  sizeTitle = 25,
   showLegend = true,
   donut = false,
   className = ''
@@ -132,7 +133,7 @@ export const PieChartD3 = ({
   }, [data, colors, radius, donut, chartWidth, chartHeight]);
 
   return (
-    <div className={`w-fit flex flex-col items-center border border-amber-400 ${className}`}>
+    <div className={`w-fit flex-col items-center border border-amber-400 ${className}`}>
       {title && <h2
         className={`font-semibold py-2`}
         style={{ fontSize: sizeTitle }}

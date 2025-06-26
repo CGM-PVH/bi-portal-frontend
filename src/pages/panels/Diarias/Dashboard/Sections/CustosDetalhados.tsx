@@ -12,7 +12,7 @@ export default function CustosDetalhados() {
     <div className="mt-4 mb-4 space-y-10">
       {/* Barras verticais */}
       <div>
-        <Suspense fallback={<div className="">Carregando gráfico de barras...</div>}>
+        <Suspense fallback={<div className="mb-0">Carregando gráfico de barras...</div>}>
           <VerticalBar />
         </Suspense>
       </div>

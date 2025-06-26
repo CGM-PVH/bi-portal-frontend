@@ -1,5 +1,4 @@
-// local: src/components/Charts/LineChart.tsx
-// grafico de linha
+import { memo, useMemo } from "react";
 import {
   CartesianGrid,
   Legend,
@@ -29,7 +28,7 @@ type LineChartProps = {
   className?: string;
 };
 
-export const LineChartRecharts = ({
+const LineChartRechartsComponent = ({
   title,
   data,
   keys,
@@ -38,33 +37,36 @@ export const LineChartRecharts = ({
   colors,
   showLegend,
   className = "",
+  height = 300,
+  width = 500,
 }: LineChartProps) => {
-  const dataKeys =
-    keys ?? Object.keys(data[0] ?? {}).filter((k) => k !== "label");
+  const dataKeys = useMemo(() => {
+    return keys ?? Object.keys(data[0] ?? {}).filter((k) => k !== "label");
+  }, [keys, data]);
+
+  const legendWrapperStyle = useMemo(() => ({
+    fontSize: sizeLegend,
+  }), [sizeLegend]);
+
   return (
     <div
-      className={`flex flex-col items-center justify-center py-3 ${className}`}
+      className={`flex flex-col items-center justify-center py-4 ${className}`}
+      style={{ width, height }}
     >
-      <p className="font-semibold pb-2" style={{ fontSize: sizeTitle }}>
+      <p className="font-semibold pb-0" style={{ fontSize: sizeTitle }}>
         {title}
       </p>
 
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           data={data}
-          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+          margin={{ top: 0, right: 10, left: 10, bottom: 14 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="label" />
           <YAxis />
           <Tooltip />
-          {showLegend && (
-            <Legend
-              wrapperStyle={{
-                fontSize: sizeLegend,
-              }}
-            />
-          )}
+          {showLegend && <Legend wrapperStyle={legendWrapperStyle} />}
           {dataKeys.map((key, i) => (
             <Line
               key={key}
@@ -80,5 +82,6 @@ export const LineChartRecharts = ({
     </div>
   );
 };
-
+const LineChartRecharts = memo(LineChartRechartsComponent);
 export default LineChartRecharts;
+

@@ -6,7 +6,7 @@ import { dadosMapaCalor } from "../../data/dataCharts/CharHeatMap";
 export default function HeatMap() {
   return (
     <>
-      <h2 className="text-xl font-semibold bg-lime-500 rounded-md p-2">
+      <h2 className="text-xl font-semibold bg-lime-500 mb-0 rounded-md p-2">
         Frequência de OS por dia e hora
       </h2>
       <p className="text-sm text-gray-500">

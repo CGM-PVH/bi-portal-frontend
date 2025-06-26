@@ -1,25 +1,24 @@
-//local: ./src/components/Charts/VerticalChar.tsx
-// gráfico de barras verticais
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
+// ./src/components/Charts/VerticalChar.tsx
+import React, { useEffect, useState } from "react";
 import { dadosBarrasVerticais } from "../../data/dataCharts/CharVerticalBar";
 
-export default function VerticalBar() {
+const VerticalBar = React.memo(() => {
+  const [Recharts, setRecharts] = useState<typeof import("recharts")>();
+
+  useEffect(() => {
+    import("recharts").then(setRecharts);
+  }, []);
+
+  if (!Recharts) return <div>Carregando gráfico de barras verticais...</div>;
+
+  const { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } = Recharts;
+
   return (
     <>
-      <h2 className="text-xl font-semibold bg-lime-500 rounded-t-md p-2">
+      <h2 className="text-xl font-semibold bg-lime-500 rounded-t-md mb-0 p-2">
         Gasto Por Unidade
       </h2>
       <div className="p-8 bg-white space-y-10 rounded-b-2xl">
-        {/* Barras verticais */}
         <div>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={dadosBarrasVerticais}>
@@ -32,7 +31,9 @@ export default function VerticalBar() {
             </BarChart>
           </ResponsiveContainer>
         </div>
-      </div>{" "}
+      </div>
     </>
   );
-}
+});
+
+export default VerticalBar;

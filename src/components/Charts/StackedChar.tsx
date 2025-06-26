@@ -15,7 +15,7 @@ import { dadosBarrasEmpilhadas } from "../../data/dataCharts/CharStackedBar";
 export default function StackedBar() {
   return (
     <>
-      <h2 className="text-xl font-semibold bg-lime-500 rounded-t-md p-2">
+      <h2 className="text-xl font-semibold bg-lime-500 rounded-t-md mb-0 p-2">
         Custos MDO vs. Peças por unidade
       </h2>
       <div className="p-6 bg-white rounded-b-md">

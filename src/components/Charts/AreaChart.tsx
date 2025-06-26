@@ -1,5 +1,4 @@
-// local do arquivo: src/components/Charts/AreaChart.tsx
-// grafico de area
+import { memo, useMemo } from 'react';
 import {
   Area,
   AreaChart,
@@ -8,7 +7,7 @@ import {
   ResponsiveContainer,
   Tooltip,
   XAxis,
-  YAxis
+  YAxis,
 } from 'recharts';
 
 type DataItem = {
@@ -29,7 +28,7 @@ type AreaChartProps = {
   className?: string;
 };
 
-export const AreaChartRecharts = ({
+const AreaChartRechartsComponent = ({
   title,
   data,
   keys,
@@ -39,13 +38,21 @@ export const AreaChartRecharts = ({
   showLegend,
   height,
   width,
-  className
+  className,
 }: AreaChartProps) => {
-  const dataKeys = keys ?? Object.keys(data[0] ?? {}).filter(k => k !== 'label');
+  // Memoiza o cálculo das chaves para evitar recalcular em cada render
+  const dataKeys = useMemo(() => {
+    return keys ?? Object.keys(data[0] ?? {}).filter(k => k !== 'label');
+  }, [keys, data]);
+
+  // Memoiza o estilo da legenda para evitar objeto inline novo em cada render
+  const legendWrapperStyle = useMemo(() => ({
+    fontSize: sizeLegend,
+  }), [sizeLegend]);
 
   return (
     <div
-      className={`flex flex-col items-center justify-center py-3 ${className}`}
+      className={`flex flex-col items-center justify-center py-3 ${className ?? ''}`}
       style={{ width, height: height + 10 }}
     >
       <p className="font-semibold pb-2" style={{ fontSize: sizeTitle }}>
@@ -70,13 +77,7 @@ export const AreaChartRecharts = ({
           <YAxis />
           <CartesianGrid strokeDasharray="3 3" />
           <Tooltip />
-          {showLegend && (
-            <Legend
-              wrapperStyle={{
-                fontSize: sizeLegend,
-              }}
-            />
-          )}
+          {showLegend && <Legend wrapperStyle={legendWrapperStyle} />}
           {dataKeys.map((key, i) => (
             <Area
               key={key}
@@ -93,3 +94,6 @@ export const AreaChartRecharts = ({
     </div>
   );
 };
+
+// Memoiza o componente para evitar re-render quando as props não mudam
+export const AreaChartRecharts = memo(AreaChartRechartsComponent);

@@ -41,7 +41,7 @@ export const BarChartRecharts = ({
       <p
         className='font-semibold pb-2'
         style={{ fontSize: sizeTitle }}
-      >{title}</p>
+      >{title} </p>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart width={width} height={height} data={data}>
           <CartesianGrid strokeDasharray="3 3" />

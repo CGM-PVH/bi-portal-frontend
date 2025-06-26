@@ -1,5 +1,6 @@
-//mdo == Mão de Obra
-//os == Ordem de Serviço
+// mdo == Mão de Obra
+// os == Ordem de Serviço
+
 import {
   ResponsiveContainer,
   BarChart,
@@ -13,7 +14,9 @@ import {
   Cell,
 } from "recharts";
 
+// ==========================
 // MOCKS
+// ==========================
 const groupedBarData = [
   { mes: "Jan", bruto: 15000, comDesconto: 13000 },
   { mes: "Fev", bruto: 12000, comDesconto: 10500 },
@@ -26,32 +29,24 @@ const pieData = [
 ];
 
 const noInvoiceData = [
-  {
-    id: 201,
-    cliente: "Carlos Lima",
-    data: "2025-06-01",
-    motivo: "Peça sem NF",
-  },
-  {
-    id: 202,
-    cliente: "Ana Souza",
-    data: "2025-06-03",
-    motivo: "MDO não informada",
-  },
+  { id: 201, cliente: "Carlos Lima", data: "2025-06-01", motivo: "Peça sem NF" },
+  { id: 202, cliente: "Ana Souza", data: "2025-06-03", motivo: "MDO não informada" },
 ];
 
-// CORES PARA A PIZZA
 const COLORS = ["#34d399", "#f87171"];
 
+// ==========================
+// Componente Principal
+// ==========================
 export default function InvoicesSection() {
   return (
     <section className="w-full">
-      <h2 className="text-xl font-semibold  bg-lime-500 rounded-t-md p-2">
+      {/* Gráfico de Barras */}
+      <h2 className="text-xl font-semibold bg-lime-500 rounded-t-md p-2">
         Total Bruto x Total com Desconto
       </h2>
 
-      <div className="grid ">
-        {/* Gráfico de Barras */}
+      <div className="grid">
         <div className="bg-white p-4 rounded-b-md shadow-md mb-4">
           <ResponsiveContainer width="100%" height={250}>
             <BarChart data={groupedBarData}>
@@ -69,11 +64,9 @@ export default function InvoicesSection() {
         <h2 className="text-xl font-semibold bg-lime-500 rounded-t-md p-2">
           % de OS com e sem desconto
         </h2>
-        <section className="w-full ">
-          <div
-            className="bg-white rounded-b-md shadow-md mb-4
-          "
-          >
+
+        <section className="w-full">
+          <div className="bg-white rounded-b-md shadow-md mb-4">
             <ResponsiveContainer width="100%" height={250}>
               <PieChart>
                 <Pie
@@ -99,10 +92,11 @@ export default function InvoicesSection() {
         </section>
       </div>
 
-      {/* Tabela de OS sem nota fiscal */}
-      <h1 className="text-xl font-semibold bg-lime-500 rounded-t-md p-2">
+      {/* Tabela de OS sem Nota Fiscal */}
+      <h2 className="text-xl font-semibold bg-lime-500 rounded-t-md p-2">
         OS sem Nota Fiscal (Peças ou MDO)
-      </h1>
+      </h2>
+
       <div className="bg-white p-4 rounded-b-md shadow-md overflow-auto mb-4">
         <table className="w-full text-sm border">
           <thead>

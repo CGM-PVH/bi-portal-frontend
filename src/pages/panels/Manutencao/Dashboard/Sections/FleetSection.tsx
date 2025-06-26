@@ -1,5 +1,5 @@
 import { BarChartRecharts } from "../../../../../components/Charts/BarChart.tsx";
-import { LineChartRecharts } from "../../../../../components/Charts/LineChart.tsx";
+import LineChartRechartsComponent from "../../../../../components/Charts/LineChart.tsx";
 import { PieChartRecharts } from "../../../../../components/Charts/PieChart.tsx";
 import GenericTable from "../../../../../components/Table/GenericTable.tsx";
 
@@ -22,9 +22,8 @@ const FleetSection = ({
       </h2>
       <FleetTable isMobile={isMobile} className="" />
       <div
-        className={`mb-4 grid gap-4 ${
-          isMobile ? "grid-cols-1" : "grid-cols-3"
-        }`}
+        className={`mb-4 grid gap-4 ${isMobile ? "grid-cols-1" : "grid-cols-3"
+          }`}
       >
         <div className={isMobile ? "" : "col-span-1"}>
           <h2 className="text-xl font-semibold bg-chart-title rounded-t-md p-2 text-center">
@@ -116,9 +115,8 @@ const FleetBars = ({
   return (
     <>
       <div
-        className={`${className} p-4 rounded-b-lg shadow-md ${
-          isMobile ? "max-h-72" : "max-h-96"
-        } h-full overflow-y-auto flex items-center justify-center`}
+        className={`${className} p-4 rounded-b-lg shadow-md ${isMobile ? "max-h-72" : "max-h-96"
+          } h-full overflow-y-auto flex items-center justify-center`}
       >
         <BarChartRecharts
           data={sampleDataBarChart}
@@ -129,9 +127,8 @@ const FleetBars = ({
           height={230}
           width={350}
           colors={["#61dafb", "#dd1b16", "#FFBB28"]}
-          className={`text-white w-full h-full ${
-            isMobile ? "text-sm" : "text-base"
-          }`}
+          className={`text-white w-full h-full ${isMobile ? "text-sm" : "text-base"
+            }`}
         />
       </div>
     </>
@@ -173,11 +170,10 @@ const FleetLines = ({
   return (
     <>
       <div
-        className={`${className} p-4 rounded-b-lg shadow-md ${
-          isMobile ? "max-h-72" : "max-h-96"
-        } h-full overflow-y-auto flex items-center justify-center`}
+        className={`${className} p-4 rounded-b-lg shadow-md ${isMobile ? "max-h-72" : "max-h-96"
+          } h-full overflow-y-auto flex items-center justify-center`}
       >
-        <LineChartRecharts
+        <LineChartRechartsComponent
           data={sampleDataLineChart}
           title=""
           showLegend={true}
@@ -208,9 +204,8 @@ const FleetPie = ({
   return (
     <>
       <div
-        className={`${className} p-4 rounded-b-lg shadow-md ${
-          isMobile ? "max-h-72" : "max-h-96"
-        } h-full overflow-y-auto flex items-center justify-center`}
+        className={`${className} p-4 rounded-b-lg shadow-md ${isMobile ? "max-h-72" : "max-h-96"
+          } h-full overflow-y-auto flex items-center justify-center`}
       >
         <PieChartRecharts
           data={sampleDataPieChart}

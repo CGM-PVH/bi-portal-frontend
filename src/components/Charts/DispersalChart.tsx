@@ -1,6 +1,4 @@
-//local do grafico: src/components/Charts/DispersalChart.tsx
-//grafico de dispersão
-
+import { memo } from "react";
 import {
   XAxis,
   YAxis,
@@ -11,26 +9,15 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { dadosDispersao } from "../../data/dataCharts/CharDispersal";
-import { useEffect } from "react";
-export default function Dispersal() {
-  useEffect(() => {
-    const handleResize = () => { };
 
-    handleResize(); // inicializa
-    window.addEventListener("resize", handleResize); // escuta resize
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
+function DispersalComponent() {
   return (
     <>
-      {/* Título */}
-      <h2 className="text-xl font-semibold bg-lime-500 rounded-t-md p-2">
+      <h2 className="text-xl font-semibold bg-lime-500 mb-0 rounded-t-md p-2">
         Dispersão KM/Horímetro x Custo
       </h2>
 
-      {/* Grid estilo cards */}
       <div className="grid grid-cols-1 gap-4">
-        {/* Card do gráfico */}
         <div className="bg-white p-4 rounded-b-md shadow-md">
           <ResponsiveContainer width="100%" height={250}>
             <ScatterChart>
@@ -39,11 +26,7 @@ export default function Dispersal() {
                 type="number"
                 dataKey="km_horimetro"
                 name="KM/Horímetro"
-                label={{
-                  value: "KM/Horímetro",
-                  position: "insideBottom",
-                  offset: -5,
-                }}
+                label={{ value: "KM/Horímetro", position: "insideBottom", offset: -5 }}
               />
               <YAxis
                 type="number"
@@ -60,3 +43,5 @@ export default function Dispersal() {
     </>
   );
 }
+
+export default memo(DispersalComponent);

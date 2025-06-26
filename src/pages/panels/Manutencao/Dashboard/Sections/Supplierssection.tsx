@@ -1,5 +1,5 @@
 import { VerticalBarChartRecharts } from "../../../../../components/Charts/BarChart.tsx";
-import { LineChartRecharts } from "../../../../../components/Charts/LineChart.tsx";
+import LineChartRechartsComponent from "../../../../../components/Charts/LineChart.tsx";
 import GenericTable from "../../../../../components/Table/GenericTable.tsx";
 
 const SuppliersSection = ({ isMobile }: { isMobile: boolean }) => {
@@ -14,9 +14,8 @@ const SuppliersSection = ({ isMobile }: { isMobile: boolean }) => {
       </h2>
       <SuppliersTable isMobile={isMobile} />
       <div
-        className={`mb-4 grid gap-4 ${
-          isMobile ? "grid-cols-1" : "grid-cols-4"
-        }`}
+        className={`mb-4 grid gap-4 ${isMobile ? "grid-cols-1" : "grid-cols-4"
+          }`}
       >
         <div className={isMobile ? "" : "col-span-2"}>
           <h2 className="text-xl font-semibold bg-chart-title rounded-t-md p-2 text-center">
@@ -102,9 +101,8 @@ const SuppliersBarChart = ({
   return (
     <>
       <div
-        className={`${className} p-4 rounded-b-lg shadow-md ${
-          isMobile ? "max-h-72" : "max-h-96"
-        } h-full overflow-y-auto flex items-center justify-center`}
+        className={`${className} p-4 rounded-b-lg shadow-md ${isMobile ? "max-h-72" : "max-h-96"
+          } h-full overflow-y-auto flex items-center justify-center`}
       >
         <VerticalBarChartRecharts
           data={sampleDataBarChart}
@@ -115,9 +113,8 @@ const SuppliersBarChart = ({
           height={230}
           width={350}
           colors={["#61dafb", "#dd1b16", "#FFBB28"]}
-          className={`text-white w-full h-full ${
-            isMobile ? "text-sm" : "text-base"
-          }`}
+          className={`text-white w-full h-full ${isMobile ? "text-sm" : "text-base"
+            }`}
         />
       </div>
     </>
@@ -156,7 +153,7 @@ const SuppliersTimeLine = ({ className }: { className: string }) => {
       <div
         className={`${className} p-4 rounded-b-lg shadow-md max-h-96 h-full overflow-y-auto flex items-center justify-center`}
       >
-        <LineChartRecharts
+        <LineChartRechartsComponent
           data={sampleDataLineChart}
           title=""
           showLegend={true}

@@ -1,4 +1,4 @@
-import { LineChartRecharts } from "../../../../../components/Charts/LineChart.tsx";
+import LineChartRechartsComponent from "../../../../../components/Charts/LineChart.tsx";
 import { PieChartRecharts } from "../../../../../components/Charts/PieChart.tsx";
 
 export const OverView = ({ isMobile }: { isMobile: boolean }) => {
@@ -18,9 +18,8 @@ export const OverView = ({ isMobile }: { isMobile: boolean }) => {
         isMobile={isMobile}
       />
       <div
-        className={`mb-4 grid gap-4 ${
-          isMobile ? "grid-cols-1" : "grid-cols-5"
-        }`}
+        className={`mb-4 grid gap-4 ${isMobile ? "grid-cols-1" : "grid-cols-5"
+          }`}
       >
         <div className={isMobile ? "" : "col-span-2"}>
           <OverViewPizzaDistribution
@@ -75,17 +74,15 @@ const OverViewKpiCards = ({
   return (
     <>
       <div
-        className={`mb-4 grid ${
-          isMobile ? `grid-cols-2 gap-2` : `grid-cols-4 gap-4`
-        }`}
+        className={`mb-4 grid ${isMobile ? `grid-cols-2 gap-2` : `grid-cols-4 gap-4`
+          }`}
       >
         {/* Generate KPI Cards */}
         {kpiCardsData.map((card, index) => (
           <div
             key={index}
-            className={`rounded-lg ${className} ${
-              isMobile ? "p-4" : "p-8"
-            }  shadow-md flex flex-col items-ce`}
+            className={`rounded-lg ${className} ${isMobile ? "p-4" : "p-8"
+              }  shadow-md flex flex-col items-ce`}
           >
             <p className="text-md font-medium">{card.title}</p>
             <p className="text-3xl font-semibold ">{card.value}</p>
@@ -136,7 +133,7 @@ const OverViewTimeLine = ({ className }: { className: string }) => {
       <div
         className={`${className} p-4 rounded-b-lg shadow-md max-h-96 h-full overflow-y-auto flex items-center justify-center`}
       >
-        <LineChartRecharts
+        <LineChartRechartsComponent
           data={sampleDataLineChart}
           title=""
           showLegend={true}
@@ -171,9 +168,8 @@ const OverViewPizzaDistribution = ({
         Proporção por Tipo de OS
       </h2>
       <div
-        className={`${className} p-4 rounded-b-lg shadow-md ${
-          isMobile ? "max-h-72" : "max-h-96"
-        } h-full overflow-y-auto flex items-center justify-center`}
+        className={`${className} p-4 rounded-b-lg shadow-md ${isMobile ? "max-h-72" : "max-h-96"
+          } h-full overflow-y-auto flex items-center justify-center`}
       >
         <PieChartRecharts
           data={sampleDataPieChart}

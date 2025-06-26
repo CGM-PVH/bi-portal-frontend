@@ -1,6 +1,6 @@
 // src/data/navLinks.tsx
 import { lazy } from "react";
-import { BarChart2, Database, House } from "lucide-react";
+import { BarChart2, BarChart3, Database, House, Settings } from "lucide-react";
 import type { NavLinkInterface } from "../interfaces/navLinksInterface";
 
 // Lazy loading das páginas
@@ -23,7 +23,7 @@ const navLinks: NavLinkInterface[] = [
   {
     title: "Painel",
     path: "/painel/manutencao/dashboard",
-    icon: <BarChart2 size={18} />,
+    icon: <BarChart3 size={18} />,
     element: <Dashboard />,
     group: "manutencao",
   },
@@ -37,7 +37,7 @@ const navLinks: NavLinkInterface[] = [
   {
     title: "Início",
     path: "/painel/diarias/home",
-    icon: <House size={18} />,
+    icon: <Settings size={18} />,
     element: <HomeDiarias />,
     group: "diarias",
   },
@@ -56,6 +56,7 @@ const navLinks: NavLinkInterface[] = [
     group: "diarias",
   },
 ];
+
 
 export default function getNavLinks() {
   return navLinks;
