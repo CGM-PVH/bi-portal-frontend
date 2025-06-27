@@ -1,10 +1,10 @@
 // Funções dos Gráficos
 import React, { Suspense } from "react";
 
-const Dispersal = React.lazy(() => import("../../../../../components/Charts/DispersalChart.tsx"));
-const HeatMap = React.lazy(() => import("../../../../../components/Charts/HeatMapChar.tsx"));
-const StackedBar = React.lazy(() => import("../../../../../components/Charts/StackedChar.tsx"));
-const VerticalBar = React.lazy(() => import("../../../../../components/Charts/VerticalChar.tsx"));
+const Dispersal = React.lazy(() => import("../../../../../components/Charts/CustosDetalhados/DispersalChart.tsx"));
+const HeatMap = React.lazy(() => import("../../../../../components/Charts/CustosDetalhados/HeatMapChar.tsx"));
+const StackedBar = React.lazy(() => import("../../../../../components/Charts/CustosDetalhados/StackedChar.tsx"));
+const VerticalBar = React.lazy(() => import("../../../../../components/Charts/CustosDetalhados/VerticalChar.tsx"));
 
 export default function CustosDetalhados() {
 

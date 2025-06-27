@@ -3,10 +3,14 @@ import React, { Suspense } from "react";
 
 // Lazy loading de todas as seções
 const OverView = React.lazy(() => import("./Sections/OverView"));
-const CustosDetalhados = React.lazy(() => import("./Sections/CustosDetalhados"));
+const CustosDetalhados = React.lazy(
+  () => import("./Sections/CustosDetalhados")
+);
 const InvoicesSection = React.lazy(() => import("./Sections/InvoicesSection"));
 const FleetSection = React.lazy(() => import("./Sections/FleetSection"));
-const SuppliersSection = React.lazy(() => import("./Sections/Supplierssection"));
+const SuppliersSection = React.lazy(
+  () => import("./Sections/Supplierssection")
+);
 
 export default function Dashboard() {
   const isMobile = useOutletContext<boolean>();
@@ -23,7 +27,9 @@ export default function Dashboard() {
 
       {QuemFez("Filipe Farias", showQuemFez)}
 
-      {!render ? "" : (
+      {!render ? (
+        ""
+      ) : (
         <Suspense fallback={<div>Carregando custos detalhados...</div>}>
           <CustosDetalhados />
         </Suspense>
@@ -31,7 +37,9 @@ export default function Dashboard() {
 
       {QuemFez("Filipe Farias", showQuemFez)}
 
-      {!render ? "" : (
+      {!render ? (
+        ""
+      ) : (
         <Suspense fallback={<div>Carregando faturas...</div>}>
           <InvoicesSection />
         </Suspense>
@@ -39,7 +47,9 @@ export default function Dashboard() {
 
       {QuemFez("Jhonatan", showQuemFez)}
 
-      {!render ? "" : (
+      {!render ? (
+        ""
+      ) : (
         <Suspense fallback={<div>Carregando frota...</div>}>
           <FleetSection isMobile={isMobile} className={""} />
         </Suspense>
@@ -47,7 +57,9 @@ export default function Dashboard() {
 
       {QuemFez("Jhonatan", showQuemFez)}
 
-      {!render ? "" : (
+      {!render ? (
+        ""
+      ) : (
         <Suspense fallback={<div>Carregando fornecedores...</div>}>
           <SuppliersSection isMobile={isMobile} />
         </Suspense>
@@ -63,7 +75,9 @@ const QuemFez = (text: string, show: boolean) => {
         <h1 className="bg-red-500 rounded-md my-5 p-2 justify-center font-bold">
           {`Seção desenvolvida por ${text}`}
         </h1>
-      ) : ""}
+      ) : (
+        ""
+      )}
     </>
   );
 };

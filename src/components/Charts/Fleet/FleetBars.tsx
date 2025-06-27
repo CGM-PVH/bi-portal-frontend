@@ -1,7 +1,7 @@
-import React, { Suspense } from "react";
-import { fleetBarsData } from "../../data/fleet/FleetBarsData";
+import { Suspense } from "react";
 import ChartContainer from "./ChartContainer";
-const BarChartRecharts = React.lazy(() => import("../Charts/BarChart"));
+import { fleetBarsData } from "../../../data/dataCharts/fleet/FleetBarsData";
+import BarChartRecharts from "../CustosDetalhados/BarChart";
 
 const FleetBars = ({ isMobile, className }: { isMobile: boolean; className: string; }) => {
     return (

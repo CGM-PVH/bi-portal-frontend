@@ -1,8 +1,7 @@
-import React, { Suspense } from "react";
-import { fleetPieData } from "../../data/fleet/FleetPieData";
+import { Suspense } from "react";
 import ChartContainer from "./ChartContainer";
-
-const PieChartRecharts = React.lazy(() => import("../Charts/PieChart"));
+import { fleetPieData } from "../../../data/dataCharts/fleet/FleetPieData";
+import PieChartRecharts from "../CustosDetalhados/PieChart";
 
 const FleetPie = ({ isMobile, className }: { isMobile: boolean; className: string; }) => {
     return (
@@ -18,8 +17,7 @@ const FleetPie = ({ isMobile, className }: { isMobile: boolean; className: strin
                     chartHeight={isMobile ? 300 : 350}
                     chartWidth={isMobile ? 125 : 350}
                     colors={["#0088FE", "#00C49F", "#FFBB28", "#ff3e00"]}
-                    className="text-white w-full h-full"
-                />
+                    className="text-white w-full h-full" />
             </ChartContainer>
         </Suspense>
     );

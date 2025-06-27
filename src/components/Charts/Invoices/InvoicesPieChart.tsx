@@ -1,6 +1,6 @@
 //Gráfico de pizza
 import { PieChart, Pie, Tooltip, Cell, ResponsiveContainer } from "recharts";
-import { invoicesPieData, PIE_COLORS } from "../../data/invoices/InvoicesPieData";
+import { invoicesPieData, PIE_COLORS } from "../../../data/dataCharts/invoices/InvoicesPieData";
 
 export default function InvoicesPieChart() {
     return (

@@ -1,5 +1,5 @@
-import GenericTable from "../Table/GenericTable";
-import { fleetTableData } from "../../data/fleet/FleetTableData";
+import { fleetTableData } from "../../../data/dataCharts/fleet/FleetTableData";
+import GenericTable from "../../Table/GenericTable";
 
 const FleetTable = ({ isMobile, className }: { isMobile: boolean; className?: string; }) => {
     const anos = [...new Set(fleetTableData.map((d) => d.ano))];

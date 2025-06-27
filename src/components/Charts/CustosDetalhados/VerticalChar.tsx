@@ -1,6 +1,6 @@
 // ./src/components/Charts/VerticalChar.tsx
 import React, { useEffect, useState } from "react";
-import { dadosBarrasVerticais } from "../../data/dataCharts/CharVerticalBar";
+import { dadosBarrasVerticais } from "../../../data/dataCharts/CharVerticalBar";
 
 const VerticalBar = React.memo(() => {
   const [Recharts, setRecharts] = useState<typeof import("recharts")>();

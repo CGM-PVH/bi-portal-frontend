@@ -1,8 +1,8 @@
-import FleetTable from "../../../../../components/Fleet/FleetTable";
-import FleetBars from "../../../../../components/Fleet/FleetBars";
-import FleetLines from "../../../../../components/Fleet/FleetLines";
-import FleetPie from "../../../../../components/Fleet/FleetPie";
-import ChartCard from "../../../../../components/Fleet/ChartCard"
+import FleetTable from "../../../../../components/Charts/Fleet/FleetTable";
+import FleetBars from "../../../../../components/Charts/Fleet/FleetBars";
+import FleetLines from "../../../../../components/Charts/Fleet/FleetLines";
+import FleetPie from "../../../../../components/Charts/Fleet/FleetPie";
+import ChartCard from "../../../../../components/Charts/Fleet/ChartCard"
 
 const FleetSection = ({ isMobile, className }: { isMobile: boolean; className: string; }) => {
   return (

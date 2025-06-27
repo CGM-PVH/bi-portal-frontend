@@ -1,6 +1,6 @@
 // Gráfico de barras
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from "recharts";
-import { invoicesBarData } from "../../data/invoices/InvoicesBarData";
+import { invoicesBarData } from "../../../data/dataCharts/invoices/InvoicesBarData";
 
 export default function InvoicesBarChart() {
     return (

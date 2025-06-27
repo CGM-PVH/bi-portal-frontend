@@ -1,5 +1,5 @@
 //Tabela de OS sem NF
-import { invoicesTableData } from "../../data/invoices/InvoicesTableData";
+import { invoicesTableData } from "../../../data/dataCharts/invoices/InvoicesTableData";
 
 export default function InvoicesTable() {
     return (

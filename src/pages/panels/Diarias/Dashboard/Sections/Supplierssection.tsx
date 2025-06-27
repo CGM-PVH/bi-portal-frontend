@@ -1,8 +1,8 @@
 import React, { Suspense } from 'react';
 
 // Lazy loading dos componentes
-const VerticalBarChartRecharts = React.lazy(() => import('../../../../../components/Charts/BarChart'));
-const LineChartRecharts = React.lazy(() => import('../../../../../components/Charts/LineChart'));
+const VerticalBarChartRecharts = React.lazy(() => import('../../../../../components/Charts/CustosDetalhados/BarChart'));
+const LineChartRecharts = React.lazy(() => import('../../../../../components/Charts/CustosDetalhados/LineChart'));
 const GenericTable = React.lazy(() => import('../../../../../components/Table/GenericTable'));
 
 // ==========================

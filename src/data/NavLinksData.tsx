@@ -1,7 +1,7 @@
 // src/data/navLinks.tsx
 import { lazy } from "react";
 import { BarChart2, BarChart3, Database, House, Settings } from "lucide-react";
-import type { NavLinkInterface } from "../interfaces/navLinksInterface";
+import type { NavLinkInterface } from "../layouts/LayoutBase/navLinksInterface";
 
 // Lazy loading das páginas
 const Dashboard = lazy(() => import('../pages/panels/Manutencao/Dashboard/Dashboard'));

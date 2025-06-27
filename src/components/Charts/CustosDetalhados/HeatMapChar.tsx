@@ -1,7 +1,8 @@
 //local do grafico: src/components/Charts/HeatMapChar.tsx
 //grafico de mapa de calor
 
-import { dadosMapaCalor } from "../../data/dataCharts/CharHeatMap";
+import { dadosMapaCalor } from "../../../data/dataCharts/CharHeatMap";
+
 
 export default function HeatMap() {
   return (

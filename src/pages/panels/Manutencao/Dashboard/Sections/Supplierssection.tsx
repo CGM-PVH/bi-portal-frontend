@@ -1,5 +1,5 @@
-import { VerticalBarChartRecharts } from "../../../../../components/Charts/BarChart.tsx";
-import LineChartRechartsComponent from "../../../../../components/Charts/LineChart.tsx";
+import { VerticalBarChartRecharts } from "../../../../../components/Charts/CustosDetalhados/BarChart.tsx";
+import LineChartRechartsComponent from "../../../../../components/Charts/CustosDetalhados/LineChart.tsx";
 import GenericTable from "../../../../../components/Table/GenericTable.tsx";
 
 const SuppliersSection = ({ isMobile }: { isMobile: boolean }) => {

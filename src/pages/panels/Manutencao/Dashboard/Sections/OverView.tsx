@@ -1,5 +1,5 @@
-import LineChartRechartsComponent from "../../../../../components/Charts/LineChart.tsx";
-import { PieChartRecharts } from "../../../../../components/Charts/PieChart.tsx";
+import LineChartRechartsComponent from "../../../../../components/Charts/CustosDetalhados/LineChart.tsx";
+import { PieChartRecharts } from "../../../../../components/Charts/CustosDetalhados/PieChart.tsx";
 
 export const OverView = ({ isMobile }: { isMobile: boolean }) => {
   const screenMode = ["bg-slate-800", "bg-white"];

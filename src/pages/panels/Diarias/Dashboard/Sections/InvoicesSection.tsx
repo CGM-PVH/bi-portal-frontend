@@ -1,6 +1,6 @@
-import InvoicesBarChart from "../../../../../components/Invoices/InvoicesBarChart";
-import InvoicesPieChart from "../../../../../components/Invoices/InvoicesPieChart";
-import InvoicesTable from "../../../../../components/Invoices/InvoicesTable";
+import InvoicesBarChart from "../../../../../components/Charts/Invoices/InvoicesBarChart";
+import InvoicesPieChart from "../../../../../components/Charts/Invoices/InvoicesPieChart";
+import InvoicesTable from "../../../../../components/Charts/Invoices/InvoicesTable";
 
 export default function InvoicesSection() {
   return (

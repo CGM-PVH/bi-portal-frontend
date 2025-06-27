@@ -1,6 +1,6 @@
-import { BarChartRecharts } from "../../../../../components/Charts/BarChart.tsx";
-import LineChartRechartsComponent from "../../../../../components/Charts/LineChart.tsx";
-import { PieChartRecharts } from "../../../../../components/Charts/PieChart.tsx";
+import { BarChartRecharts } from "../../../../../components/Charts/CustosDetalhados/BarChart.tsx";
+import LineChartRechartsComponent from "../../../../../components/Charts/CustosDetalhados/LineChart.tsx";
+import { PieChartRecharts } from "../../../../../components/Charts/CustosDetalhados/PieChart.tsx";
 import GenericTable from "../../../../../components/Table/GenericTable.tsx";
 
 const FleetSection = ({

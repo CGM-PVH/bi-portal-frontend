@@ -8,7 +8,7 @@ import {
   Scatter,
   ResponsiveContainer,
 } from "recharts";
-import { dadosDispersao } from "../../data/dataCharts/CharDispersal";
+import { dadosDispersao } from "../../../data/dataCharts/CharDispersal";
 
 function DispersalComponent() {
   return (

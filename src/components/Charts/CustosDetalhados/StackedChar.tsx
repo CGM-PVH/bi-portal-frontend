@@ -10,7 +10,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { dadosBarrasEmpilhadas } from "../../data/dataCharts/CharStackedBar";
+import { dadosBarrasEmpilhadas } from "../../../data/dataCharts/CharStackedBar";
 
 export default function StackedBar() {
   return (

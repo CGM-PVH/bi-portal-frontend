@@ -1,7 +1,7 @@
 import { Menu, X } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 import getNavLinks from "../../../data/NavLinksData";
-import type { NavLinkInterface } from "../../../interfaces/navLinksInterface";
+import type { NavLinkInterface } from "../../../layouts/LayoutBase/navLinksInterface";
 
 export default function NavBarMobile({
   isOpen,
