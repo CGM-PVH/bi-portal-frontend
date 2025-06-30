@@ -1,19 +1,24 @@
-import React, { Suspense } from 'react';
+// ==========================
+// src/pages/panels/Diarias/Sections/SuppliersSection.tsx
+// ==========================
+import React from 'react';
 
-// Lazy loading dos componentes
-const VerticalBarChartRecharts = React.lazy(() => import('../../../../../components/Charts/CustosDetalhados/BarChart'));
-const LineChartRecharts = React.lazy(() => import('../../../../../components/Charts/CustosDetalhados/LineChart'));
-const GenericTable = React.lazy(() => import('../../../../../components/Table/GenericTable'));
+// Import dos componentes locais
+import { SuppliersHeader } from '../../../../../components/Charts/Suppliersection/SuppliersHeader';
+import { SuppliersTable } from '../../../../../components/Charts/Suppliersection/SuppliersTable';
+import { SuppliersBarChart } from '../../../../../components/Charts/Suppliersection/SuppliersBarChart';
+import { SuppliersTimeLine } from '../../../../../components/Charts/Suppliersection/SuppliersTimeLine';
+
+// Import dos tipos
+import type { SuppliersProps } from '../../../../../data/dataCharts/Supplier/suppliersTypes';
 
 // ==========================
 // Componente Principal
 // ==========================
-const SuppliersSection = ({ isMobile }: { isMobile: boolean }) => {
+const SuppliersSection: React.FC<SuppliersProps> = ({ isMobile }) => {
   return (
     <>
-      <h1 className='text-2xl font-bold bg-official-yellow rounded-md p-2 mb-4 text-left'>
-        ESTABELECIMENTOS E FORNECEDORES
-      </h1>
+      <SuppliersHeader />
 
       <h2 className='text-xl font-semibold bg-chart-title rounded-t-md p-2 text-center'>
         Estabelecimentos com mais Ordem de Serviço (OS)
@@ -41,102 +46,3 @@ const SuppliersSection = ({ isMobile }: { isMobile: boolean }) => {
 };
 
 export default SuppliersSection;
-
-// ==========================
-// Tabela
-// ==========================
-const SuppliersTable = ({ isMobile, className }: { isMobile: boolean; className?: string }) => {
-  const sampleData = [
-    { placa: 'ABC-1234', modelo: 'Fiat Uno', ano: 2015, os: 12, custo: 5200 },
-    { placa: 'XYZ-5678', modelo: 'Chevrolet Onix', ano: 2018, os: 8, custo: 3400 },
-    { placa: 'DEF-9101', modelo: 'Toyota Corolla', ano: 2020, os: 15, custo: 7800 },
-    { placa: 'GHI-1121', modelo: 'Ford Ka', ano: 2016, os: 5, custo: 2100 },
-  ];
-
-  const anos = [...new Set(sampleData.map((d) => d.ano))];
-
-  return (
-    <GenericTable
-      data={sampleData}
-      columns={[
-        { field: 'placa' },
-        { field: 'modelo' },
-        { field: 'ano' },
-        { field: 'os', label: 'Nº de OS' },
-        { field: 'custo', label: 'Custo Total (R$)' },
-      ]}
-      filtersConfig={[
-        { field: 'modelo', label: 'Modelo', type: 'text' },
-        { field: 'ano', label: 'Ano', type: 'select', options: anos },
-        { field: 'custo', label: 'Custo', type: 'number' },
-      ]}
-      isMobile={isMobile}
-      className={className}
-    />
-  );
-};
-
-// ==========================
-// Gráfico de Barras
-// ==========================
-const SuppliersBarChart = ({ isMobile, className }: { isMobile: boolean; className: string }) => {
-  const sampleDataBarChart = [
-    { label: 'Janeiro', vendas: 300, lucro: 240, margemErro: 20 },
-    { label: 'Fevereiro', vendas: 350, lucro: 221, margemErro: 40 },
-    { label: 'Março', vendas: 100, lucro: 29, margemErro: 200 },
-    { label: 'Abril', vendas: 250, lucro: 129, margemErro: 70 },
-    { label: 'Maio', vendas: 200, lucro: 246, margemErro: 120 },
-  ];
-
-  return (
-    <div
-      className={`${className} p-4 rounded-b-lg shadow-md ${isMobile ? 'max-h-72' : 'max-h-96'} h-full overflow-y-auto flex items-center justify-center`}
-    >
-      <Suspense fallback={<div>Carregando gráfico de barras...</div>}>
-        <VerticalBarChartRecharts
-          data={sampleDataBarChart}
-          title=""
-          showLegend={true}
-          sizeLegend={12}
-          sizeTitle={20}
-          height={230}
-          width={350}
-          colors={['#61dafb', '#dd1b16', '#FFBB28']}
-          className={`text-white w-full h-full ${isMobile ? 'text-sm' : 'text-base'}`}
-        />
-      </Suspense>
-    </div>
-  );
-};
-
-// ==========================
-// Gráfico de Linha
-// ==========================
-const SuppliersTimeLine = ({ className }: { className: string }) => {
-  const sampleDataLineChart = [
-    { label: '2022', uv: 4000, pv: 2400, amt: 2400 },
-    { label: '2023', uv: 3000, pv: 1398, amt: 2210 },
-    { label: '2024', uv: 2000, pv: 9800, amt: 2290 },
-    { label: '2025', uv: 2780, pv: 3908, amt: 2000 },
-  ];
-
-  return (
-    <div
-      className={`${className} p-4 rounded-b-lg shadow-md max-h-96 h-full overflow-y-auto flex items-center justify-center`}
-    >
-      <Suspense fallback={<div>Carregando gráfico de linha...</div>}>
-        <LineChartRecharts
-          data={sampleDataLineChart}
-          title=""
-          showLegend={true}
-          sizeLegend={16}
-          sizeTitle={20}
-          height={300}
-          width={1250}
-          colors={['#8884d8', '#82ca9d', '#FFBB28']}
-          className='text-white w-full h-full'
-        />
-      </Suspense>
-    </div>
-  );
-};
