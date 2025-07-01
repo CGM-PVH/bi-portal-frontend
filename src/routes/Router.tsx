@@ -1,11 +1,11 @@
 // routes/Router.tsx
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Suspense } from "react";
-import getNavLinks from "../data/NavLinksData.tsx";
-import LayoutBase from "../layouts/LayoutBase/LayoutBase.tsx";
-import HubPage from "../pages/Hub/Hub.tsx";
-import NotFound from "../pages/NotFound/NotFound.tsx";
-import Home from "../pages/panels/Manutencao/Home/Home.tsx";
+import getNavLinks from "../data/NavLinksData";
+import LayoutBase from "../layouts/LayoutBase/LayoutBase";
+import HubPage from "../pages/Hub/Hub";
+import NotFound from "../pages/NotFound/NotFound";
+import Home from "../pages/panels/Manutencao/Home/Home";
 
 function Router() {
   const navLinks = getNavLinks();
