@@ -1,7 +1,8 @@
 // src/data/navLinks.tsx
 import { lazy } from "react";
-import { BarChart2, BarChart3, Database, House, Settings } from "lucide-react";
+import { BarChart2, BarChart3, Database, House, FingerprintIcon } from "lucide-react";
 import type { NavLinkInterface } from "../layouts/LayoutBase/navLinksInterface";
+import HubPage from "@/pages/Hub/Hub";
 
 // Lazy loading das páginas
 const Dashboard = lazy(() => import('../pages/panels/Manutencao/Dashboard/Dashboard'));
@@ -13,6 +14,11 @@ const DataSourceDiarias = lazy(() => import('../pages/panels/Diarias/DataSource/
 const HomeDiarias = lazy(() => import('../pages/panels/Diarias/Home/Home'));
 
 const navLinks: NavLinkInterface[] = [
+
+  //----------------------------------------------------
+  // ------------------ Manutenção ---------------------
+  //----------------------------------------------------
+
   {
     title: "Início",
     path: "/painel/manutencao/home",
@@ -34,10 +40,14 @@ const navLinks: NavLinkInterface[] = [
     element: <DataSource />,
     group: "manutencao",
   },
+
+  //----------------------------------------------------
+  // ------------------ Diarias ------------------------
+  //----------------------------------------------------
   {
     title: "Início",
     path: "/painel/diarias/home",
-    icon: <Settings size={18} />,
+    icon: <FingerprintIcon size={18} />,
     element: <HomeDiarias />,
     group: "diarias",
   },
@@ -55,6 +65,14 @@ const navLinks: NavLinkInterface[] = [
     element: <DataSourceDiarias />,
     group: "diarias",
   },
+
+  {
+    title: "Hub",
+    path: "/",
+    icon: <House size={18} />,
+    element: <HubPage />,
+    group: "diarias",
+  }
 ];
 
 

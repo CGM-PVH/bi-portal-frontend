@@ -14,7 +14,7 @@ export default function Home() {
       <div className="bg-white text-slate-900 rounded-2xl shadow-lg p-8 md:p-12 max-w-3xl w-full flex flex-col items-center gap-6">
         <HomeIcon size={48} className="text-slate-900" />
         <h1 className="text-4xl md:text-5xl font-bold text-center">Bem-vindo!</h1>
-        
+
         {/* Descrição do projeto */}
         <p className="text-base md:text-lg text-center text-slate-800 bg-cyan-100 rounded-md p-4 shadow-inner">
           Este projeto tem como objetivo centralizar, simplificar e dar transparência à análise de dados públicos relacionados à
@@ -36,13 +36,13 @@ export default function Home() {
             <AlertTriangle size={18} /> Página Não Encontrada
           </button>
           <Link
-            to="/dashboard"
+            to="/painel/diarias/dashboard"
             className="bg-official-blue hover:bg-official-blue-active text-white font-medium px-4 py-2 rounded-lg shadow text-center transition-all ease-in-out duration-500"
           >
             Acessar o Dashboard
           </Link>
           <Link
-            to="/datasource"
+            to="/painel/diarias/datasource"
             className="bg-lime-500 hover:bg-lime-900 text-black hover:text-white font-medium px-4 py-2 rounded-lg shadow text-center transition-all ease-in-out duration-500"
           >
             Acessar os relatórios
