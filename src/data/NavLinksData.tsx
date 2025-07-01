@@ -1,6 +1,6 @@
 // src/data/navLinks.tsx
 import { lazy } from "react";
-import { BarChart2, BarChart3, Database, House, FingerprintIcon } from "lucide-react";
+import { BarChart2, BarChart3, Database, House, BookOpen } from "lucide-react";
 import type { NavLinkInterface } from "../layouts/LayoutBase/navLinksInterface";
 import HubPage from "@/pages/Hub/Hub";
 
@@ -47,7 +47,7 @@ const navLinks: NavLinkInterface[] = [
   {
     title: "Início",
     path: "/painel/diarias/home",
-    icon: <FingerprintIcon size={18} />,
+    icon: <BookOpen size={18} />,
     element: <HomeDiarias />,
     group: "diarias",
   },
