@@ -1,17 +1,16 @@
 // ==========================
 // src/pages/panels/Diarias/Sections/OverView.tsx
 // ==========================
-import React from "react";
+import React, { Suspense } from "react";
 
-// Import dos componentes locais
-import { OverViewHeader } from "../../../../../components/Charts/OverView/OverViewHeader";
-import { OverViewKpiCards } from "../../../../../components/Charts/OverView/OverViewKpiCards";
-import { OverViewTimeLine } from "../../../../../components/Charts/OverView/OverViewTimeLine";
-import { OverViewPizzaDistribution } from "../../../../../components/Charts/OverView/OverViewPizzaDistribution";
+// Lazy loading dos componentes locais
+const OverViewHeader = React.lazy(() => import("../../../../../components/Charts/OverView/OverViewHeader"));
+const OverViewKpiCards = React.lazy(() => import("../../../../../components/Charts/OverView/OverViewKpiCards"));
+const OverViewTimeLine = React.lazy(() => import("../../../../../components/Charts/OverView/OverViewTimeLine"));
+const OverViewPizzaDistribution = React.lazy(() => import("../../../../../components/Charts/OverView/OverViewPizzaDistribution"));
 
 // Import dos tipos
 import type { OverViewProps } from "../../../../../interfaces/overview/overviewTypes";
-
 
 // ==========================
 // Componente Principal
@@ -23,23 +22,31 @@ export const OverView: React.FC<OverViewProps> = ({ isMobile }) => {
 
   return (
     <>
-      <OverViewHeader />
+      <Suspense fallback={<div>Carregando cabeçalho...</div>}>
+        <OverViewHeader />
+      </Suspense>
 
-      <OverViewKpiCards
-        className={themeClass === "bg-white" ? "bg-white text-black" : "bg-slate-800 text-white"}
-        isMobile={isMobile}
-      />
+      <Suspense fallback={<div>Carregando KPIs...</div>}>
+        <OverViewKpiCards
+          className={themeClass === "bg-white" ? "bg-white text-black" : "bg-slate-800 text-white"}
+          isMobile={isMobile}
+        />
+      </Suspense>
 
       <div className={`mb-4 grid gap-4 ${isMobile ? "grid-cols-1" : "grid-cols-5"}`}>
         <div className={isMobile ? "" : "col-span-2"}>
-          <OverViewPizzaDistribution
-            className={`${themeClass} min-w-fit`}
-            isMobile={isMobile}
-          />
+          <Suspense fallback={<div>Carregando pizza...</div>}>
+            <OverViewPizzaDistribution
+              className={`${themeClass} min-w-fit`}
+              isMobile={isMobile}
+            />
+          </Suspense>
         </div>
 
         <div className={isMobile ? "" : "col-span-3"}>
-          <OverViewTimeLine className={themeClass} />
+          <Suspense fallback={<div>Carregando linha do tempo...</div>}>
+            <OverViewTimeLine className={themeClass} />
+          </Suspense>
         </div>
       </div>
     </>

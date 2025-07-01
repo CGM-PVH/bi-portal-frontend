@@ -29,3 +29,4 @@ export const SuppliersTable: React.FC<SuppliersTableProps> = ({ isMobile, classN
         </Suspense>
     );
 };
+export default SuppliersTable;  

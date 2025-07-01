@@ -29,3 +29,5 @@ export const OverViewTimeLine: React.FC<ChartContainerProps> = ({ className }) =
         </>
     );
 };
+
+export default OverViewTimeLine;        

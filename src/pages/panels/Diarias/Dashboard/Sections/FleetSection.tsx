@@ -1,12 +1,15 @@
-import FleetTable from "../../../../../components/Charts/Fleet/FleetTable";
-import FleetBars from "../../../../../components/Charts/Fleet/FleetBars";
-import FleetLines from "../../../../../components/Charts/Fleet/FleetLines";
-import FleetPie from "../../../../../components/Charts/Fleet/FleetPie";
-import ChartCard from "../../../../../components/Charts/Fleet/ChartCard"
+import React, { Suspense } from "react";
+
+// Lazy loading dos componentes
+const FleetTable = React.lazy(() => import("../../../../../components/Charts/Fleet/FleetTable"));
+const FleetBars = React.lazy(() => import("../../../../../components/Charts/Fleet/FleetBars"));
+const FleetLines = React.lazy(() => import("../../../../../components/Charts/Fleet/FleetLines"));
+const FleetPie = React.lazy(() => import("../../../../../components/Charts/Fleet/FleetPie"));
+const ChartCard = React.lazy(() => import("../../../../../components/Charts/Fleet/ChartCard"));
 
 const FleetSection = ({ isMobile, className }: { isMobile: boolean; className: string; }) => {
   return (
-    <>
+    <Suspense fallback={<div>Carregando seção de frota...</div>}>
       <h1 className={`text-2xl font-bold bg-official-yellow rounded-t-sm p-2 text-left ${className}`}>
         VEÍCULOS E FROTA
       </h1>
@@ -30,7 +33,7 @@ const FleetSection = ({ isMobile, className }: { isMobile: boolean; className: s
           <FleetPie isMobile={isMobile} className="bg-white" />
         </ChartCard>
       </div>
-    </>
+    </Suspense>
   );
 };
 

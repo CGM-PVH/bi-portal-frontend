@@ -20,3 +20,5 @@ export const OverViewKpiCards: React.FC<KpiCardsProps> = ({ className, isMobile 
         </div>
     );
 };
+
+export default OverViewKpiCards;    

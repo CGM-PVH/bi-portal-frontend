@@ -26,3 +26,4 @@ export const SuppliersBarChart: React.FC<SuppliersBarChartProps> = ({ isMobile, 
         </div>
     );
 };
+export default SuppliersBarChart;   

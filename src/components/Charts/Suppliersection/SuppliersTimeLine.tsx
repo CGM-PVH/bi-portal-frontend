@@ -27,3 +27,4 @@ export const SuppliersTimeLine: React.FC<SuppliersTimeLineProps> = ({ className 
         </div>
     );
 };
+export default SuppliersTimeLine;   

@@ -7,3 +7,4 @@ export const OverViewHeader: React.FC = () => {
         </h1>
     );
 };
+export default OverViewHeader;

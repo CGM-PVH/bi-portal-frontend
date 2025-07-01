@@ -33,3 +33,5 @@ export const OverViewPizzaDistribution: React.FC<PizzaDistributionProps> = ({
         </>
     );
 };
+
+export default OverViewPizzaDistribution;   

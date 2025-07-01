@@ -7,3 +7,4 @@ export const SuppliersHeader: React.FC = () => {
         </h1>
     );
 };
+export default SuppliersHeader;
