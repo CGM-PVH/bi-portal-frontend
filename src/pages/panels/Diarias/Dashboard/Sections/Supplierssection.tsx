@@ -4,13 +4,13 @@
 import React, { Suspense } from 'react';
 
 // Lazy loading dos componentes locais
-const SuppliersHeader = React.lazy(() => import('../../../../../components/Charts/Suppliersection/SuppliersHeader'));
-const SuppliersTable = React.lazy(() => import('../../../../../components/Charts/Suppliersection/SuppliersTable'));
-const SuppliersBarChart = React.lazy(() => import('../../../../../components/Charts/Suppliersection/SuppliersBarChart'));
-const SuppliersTimeLine = React.lazy(() => import('../../../../../components/Charts/Suppliersection/SuppliersTimeLine'));
+const SuppliersHeader = React.lazy(() => import('@/components/Charts/Suppliersection/SuppliersHeader'));
+const SuppliersTable = React.lazy(() => import('@/components/Charts/Suppliersection/SuppliersTable'));
+const SuppliersBarChart = React.lazy(() => import('@/components/Charts/Suppliersection/SuppliersBarChart'));
+const SuppliersTimeLine = React.lazy(() => import('@/components/Charts/Suppliersection/SuppliersTimeLine'));
 
 // Import dos tipos
-import type { SuppliersProps } from '../../../../../data/dataCharts/Supplier/suppliersTypes';
+import type { SuppliersProps } from '@/data/dataCharts/Supplier/suppliersTypes';
 
 // ==========================
 // Componente Principal

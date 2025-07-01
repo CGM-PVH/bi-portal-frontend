@@ -4,13 +4,13 @@
 import React, { Suspense } from "react";
 
 // Lazy loading dos componentes locais
-const OverViewHeader = React.lazy(() => import("../../../../../components/Charts/OverView/OverViewHeader"));
-const OverViewKpiCards = React.lazy(() => import("../../../../../components/Charts/OverView/OverViewKpiCards"));
-const OverViewTimeLine = React.lazy(() => import("../../../../../components/Charts/OverView/OverViewTimeLine"));
-const OverViewPizzaDistribution = React.lazy(() => import("../../../../../components/Charts/OverView/OverViewPizzaDistribution"));
+const OverViewHeader = React.lazy(() => import("@/components/Charts/OverView/OverViewHeader"));
+const OverViewKpiCards = React.lazy(() => import("@/components/Charts/OverView/OverViewKpiCards"));
+const OverViewTimeLine = React.lazy(() => import("@/components/Charts/OverView/OverViewTimeLine"));
+const OverViewPizzaDistribution = React.lazy(() => import("@/components/Charts/OverView/OverViewPizzaDistribution"));
 
 // Import dos tipos
-import type { OverViewProps } from "../../../../../interfaces/overview/overviewTypes";
+import type { OverViewProps } from "@/interfaces/overview/overviewTypes";
 
 // ==========================
 // Componente Principal

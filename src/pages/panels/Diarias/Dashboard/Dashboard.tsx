@@ -3,14 +3,10 @@ import React, { Suspense } from "react";
 
 // Lazy loading de todas as seções
 const OverView = React.lazy(() => import("./Sections/OverView"));
-const CustosDetalhados = React.lazy(
-  () => import("./Sections/CustosDetalhados")
-);
+const CustosDetalhados = React.lazy(() => import("./Sections/CustosDetalhados"));
 const InvoicesSection = React.lazy(() => import("./Sections/InvoicesSection"));
 const FleetSection = React.lazy(() => import("./Sections/FleetSection"));
-const SuppliersSection = React.lazy(
-  () => import("./Sections/Supplierssection")
-);
+const SuppliersSection = React.lazy(() => import("./Sections/Supplierssection"));
 
 export default function Dashboard() {
   const isMobile = useOutletContext<boolean>();

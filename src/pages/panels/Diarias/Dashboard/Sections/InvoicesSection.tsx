@@ -1,9 +1,9 @@
 import React, { Suspense } from "react";
 
 // Lazy loading dos componentes
-const InvoicesBarChart = React.lazy(() => import("../../../../../components/Charts/Invoices/InvoicesBarChart"));
-const InvoicesPieChart = React.lazy(() => import("../../../../../components/Charts/Invoices/InvoicesPieChart"));
-const InvoicesTable = React.lazy(() => import("../../../../../components/Charts/Invoices/InvoicesTable"));
+const InvoicesBarChart = React.lazy(() => import("@/components/Charts/Invoices/InvoicesBarChart"));
+const InvoicesPieChart = React.lazy(() => import("@/components/Charts/Invoices/InvoicesPieChart"));
+const InvoicesTable = React.lazy(() => import("@/components/Charts/Invoices/InvoicesTable"));
 
 export default function InvoicesSection() {
   return (

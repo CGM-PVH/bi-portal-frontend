@@ -1,11 +1,11 @@
 import React, { Suspense } from "react";
 
 // Lazy loading dos componentes
-const FleetTable = React.lazy(() => import("../../../../../components/Charts/Fleet/FleetTable"));
-const FleetBars = React.lazy(() => import("../../../../../components/Charts/Fleet/FleetBars"));
-const FleetLines = React.lazy(() => import("../../../../../components/Charts/Fleet/FleetLines"));
-const FleetPie = React.lazy(() => import("../../../../../components/Charts/Fleet/FleetPie"));
-const ChartCard = React.lazy(() => import("../../../../../components/Charts/Fleet/ChartCard"));
+const FleetTable = React.lazy(() => import("@/components/Charts/Fleet/FleetTable"));
+const FleetBars = React.lazy(() => import("@/components/Charts/Fleet/FleetBars"));
+const FleetLines = React.lazy(() => import("@/components/Charts/Fleet/FleetLines"));
+const FleetPie = React.lazy(() => import("@/components/Charts/Fleet/FleetPie"));
+const ChartCard = React.lazy(() => import("@/components/Charts/Fleet/ChartCard"));
 
 const FleetSection = ({ isMobile, className }: { isMobile: boolean; className: string; }) => {
   return (

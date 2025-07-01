@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
+import path from "path"; // 👉 Importar path para resolver os aliases corretamente
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -22,12 +23,15 @@ export default defineConfig({
     include: ["recharts", "xlsx"],
   },
   resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "src"), // ✅ Isso aqui é o que resolve os imports com "@"
+    },
     extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
   build: {
-    minify: "terser", // Ativar minificação
-    chunkSizeWarningLimit: 500, // Garantir chunks pequenos
-    cssCodeSplit: true, // CSS dividido
-    sourcemap: false, // Desativar mapa em produção
+    minify: "terser",
+    chunkSizeWarningLimit: 500,
+    cssCodeSplit: true,
+    sourcemap: false,
   },
 });
