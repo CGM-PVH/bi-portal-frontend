@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { useDadosPainel } from '../../../../../api/graphql/hooks/useDadosPainel';
 import { LineChartRecharts } from "../../../../../components/Charts/LineChart";
 import { PieChartRecharts } from "../../../../../components/Charts/PieChart";
 
@@ -29,43 +31,49 @@ const OverViewKpiCards = ({
   className: string;
   isMobile: boolean;
 }) => {
-  // Sample data for KPI cards
+  const { data } = useDadosPainel()
+
   const kpiCardsData = [
     {
       title: "Total de OS",
-      value: "24.5K",
+      value: data?.totalOS .toLocaleString("pt-BR"),
       change: "+12.3%",
       color: "emerald-500",
     },
     {
       title: "Valor Total",
-      value: "1.2K",
+      value: data?.valorTotal.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      }),
       change: "+8.1%",
       color: "emerald-500",
     },
     {
       title: "Custo Médio por OS",
-      value: "$15.4K",
+      value: data?.custoMedio.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      }),
       change: "+10.5%",
       color: "emerald-500",
     },
     {
       title: "Total de Veículos distintos",
-      value: "3.2K",
+      value: data?.totalVeiculosDistintos.toLocaleString("pt-BR"),
       change: "+5.0%",
       color: "emerald-500",
     },
   ];
-  console.log("isMobile:", isMobile);
 
   return (
     <>
     <div className={`mb-4 grid ${isMobile? `grid-cols-2 gap-2` : `grid-cols-4 gap-4`}`}>
       {/* Generate KPI Cards */}
-      {kpiCardsData.map((card, index) => (
-        <div key={index} className={`rounded-lg ${className} ${isMobile?'p-4':'p-8'}  shadow-md flex flex-col items-ce`}>
+        {kpiCardsData.map((card, index) => (
+        <div key={index} className={`rounded-lg ${className} ${isMobile?'p-4':'py-8 px-4'} shadow-md flex flex-col`}>
           <p className="text-md font-medium">{card.title}</p>
-          <p className="text-3xl font-semibold ">{card.value}</p>
+            <p className="text-3xl font-semibold tracking-tight break-all">{card.value}</p>
           <span className={`text-md font-medium w-fit rounded-md p-1 bg-emerald-500 text-emerald-950`}>{card.change}</span>
         </div>
       ))}
@@ -75,38 +83,47 @@ const OverViewKpiCards = ({
 };
 
 const OverViewTimeLine = ({className}:{className:string}) => {
-  const sampleDataLineChart = [
-    {
-      label: "2022",
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
-    },
-    {
-      label: "2023",
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
-    },
-    {
-      label: "2024",
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
-    },
-    {
-      label: "2025",
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
-    },
-  ];
+  // const sampleDataLineChart = [
+  //   {
+  //     label: "2022",
+  //     uv: 4000,
+  //     pv: 2400,
+  //     amt: 2400,
+  //   },
+  //   {
+  //     label: "2023",
+  //     uv: 3000,
+  //     pv: 1398,
+  //     amt: 2210,
+  //   },
+  //   {
+  //     label: "2024",
+  //     uv: 2000,
+  //     pv: 9800,
+  //     amt: 2290,
+  //   },
+  //   {
+  //     label: "2025",
+  //     uv: 2780,
+  //     pv: 3908,
+  //     amt: 2000,
+  //   },
+  // ];
+  const [ dataInicio, setDataInicio ] = useState('2022-01-01');
+  const [ dataFim, setDataFim ] = useState('2025-12-31');
+  const { linhaDoTempo, loading } = useDadosPainel({
+    dataInicio,
+    dataFim
+  });
   return (
     <>
       <h2 className='text-xl font-semibold bg-chart-title rounded-t-md p-2 text-center'>Linha do Tempo</h2>
       <div className={`${className} p-4 rounded-b-lg shadow-md max-h-96 h-full overflow-y-auto flex items-center justify-center`}>
         <LineChartRecharts
-          data={sampleDataLineChart}
+          data={linhaDoTempo.map(item => ({
+            label: item.periodo,
+            value: item.total
+          }))}
           title=""
           showLegend={true}
           sizeLegend={16}
@@ -127,30 +144,35 @@ const OverViewPizzaDistribution = ({
   className: string;
   isMobile: boolean;
 }) => {
-  const sampleDataPieChart = [
-    { label: "React", value: 40 },
-    { label: "Vue", value: 30 },
-    { label: "Angular", value: 20 },
-    { label: "Svelte", value: 10 },
-  ];
+  // const sampleDataPieChart = [
+  //   { label: "React", value: 40 },
+  //   { label: "Vue", value: 30 },
+  //   { label: "Angular", value: 20 },
+  //   { label: "Svelte", value: 10 },
+  // ];
+
+  const {porTipoOS} = useDadosPainel()
 
   return (
     <>
     <h2 className='text-xl font-semibold bg-chart-title rounded-t-md p-2 text-center'>Proporção por Tipo de OS</h2>
-<div className={`${className} p-4 rounded-b-lg shadow-md ${isMobile? 'max-h-72':'max-h-96'} h-full overflow-y-auto flex items-center justify-center`}>
-      <PieChartRecharts
-        data={sampleDataPieChart}
-        donut={true}
-        title=""
-        showLegend={true}
-        sizeLegend={12}
-        sizeTitle={24}
-        chartHeight={isMobile? 300:350}
-        chartWidth={isMobile? 125:350}
-        colors={[ '#0088FE', '#00C49F', '#FFBB28', '#ff3e00' ]}
-        className='text-white w-full h-full'
-      />
-    </div>
+      <div className={`${className} p-4 rounded-b-lg shadow-md ${isMobile? 'max-h-72':'max-h-96'} h-full overflow-y-auto flex items-center justify-center`}>
+        <PieChartRecharts
+          data={porTipoOS.map(item => ({
+            label: item.nome,
+            value: item.total
+          }))}
+          donut={true}
+          title=""
+          showLegend={false}
+          sizeLegend={12}
+          sizeTitle={24}
+          chartHeight={isMobile? 300:350}
+          chartWidth={isMobile? 125:350}
+          colors={[ '#0088FE', '#00C49F', '#FFBB28', '#ff3e00' ]}
+          className='text-white w-full h-full'
+        />
+      </div>
     </>
   );
 };
