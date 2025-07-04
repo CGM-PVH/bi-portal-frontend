@@ -7,7 +7,6 @@ type DataItem = {
 };
 
 type BarChartProps = {
-  title: string;
   data: DataItem[];
   keys?: string[];
   colors: readonly string[];
@@ -20,27 +19,25 @@ type BarChartProps = {
 };;
 
 export const BarChartRecharts = ({
-  title,
   data,
   height,
   keys,
   width,
   sizeLegend,
-  sizeTitle,
   colors,
   showLegend,
   className
 }: BarChartProps) => {
-  const dataKeys = keys ?? Object.keys(data[ 0 ] ?? {}).filter(k => k !== 'label');
+  const dataKeys = keys ?? (
+    data[ 0 ]
+      ? Object.keys(data[ 0 ]).filter(k => k !== 'label')
+      : [ 'value' ]
+  );
 
   return (
     <div
       className={`flex flex-col w-fit items-center justify-center py-3 ${className}`}
     >
-      <p
-        className='font-semibold pb-2'
-        style={{ fontSize: sizeTitle }}
-      >{title}</p>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart width={width} height={height} data={data}>
           <CartesianGrid strokeDasharray="3 3" />
@@ -68,13 +65,11 @@ export const BarChartRecharts = ({
 }
 
 export const VerticalBarChartRecharts = ({
-  title,
   data,
   height,
   keys,
   width,
   sizeLegend,
-  sizeTitle,
   colors,
   showLegend,
   className
@@ -85,14 +80,10 @@ export const VerticalBarChartRecharts = ({
     <div
       className={`flex flex-col w-fit items-center justify-center py-3 ${className}`}
     >
-      <p
-        className='font-semibold pb-2'
-        style={{ fontSize: sizeTitle }}
-      >{title}</p>
       <ResponsiveContainer width="100%" height="100%">
-        <BarChart width={width} height={height} data={data} layout='vertical'>
+        <BarChart data={data} layout='vertical' margin={{ top: 0, right: 20, left: 50, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis type="number" />
+          <XAxis type="number" width={width}/>
           <YAxis type="category" dataKey="label" />
           <Tooltip />
           {showLegend &&

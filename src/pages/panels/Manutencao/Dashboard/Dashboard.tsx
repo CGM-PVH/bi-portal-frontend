@@ -9,7 +9,6 @@ import SuppliersSection from './Sections/Supplierssection';
 export default function Dashboard() {
   const isMobile = useOutletContext<boolean>();
 
-  console.log('Dashboard received isMobile:', isMobile);
   const render = true
   const showQuemFez = false
   return(

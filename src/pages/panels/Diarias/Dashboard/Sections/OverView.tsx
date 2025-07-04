@@ -56,7 +56,6 @@ const OverViewKpiCards = ({
       color: "emerald-500",
     },
   ];
-  console.log("isMobile:", isMobile);
 
   return (
     <>
