@@ -8,7 +8,6 @@ import HubPage from "@/pages/Hub/Hub";
 const Dashboard = lazy(() => import('../pages/panels/Manutencao/Dashboard/Dashboard'));
 const DataSource = lazy(() => import('../pages/panels/Manutencao/DataSource/DataSource'));
 const Home = lazy(() => import('../pages/panels/Manutencao/Home/Home'));
-
 const DashboardDiarias = lazy(() => import('../pages/panels/Diarias/Dashboard/Dashboard'));
 const DataSourceDiarias = lazy(() => import('../pages/panels/Diarias/DataSource/DataSource'));
 const HomeDiarias = lazy(() => import('../pages/panels/Diarias/Home/Home'));

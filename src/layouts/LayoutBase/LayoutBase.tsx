@@ -1,3 +1,5 @@
+//caminho: src/layouts/LayoutBase/LayoutBase.tsx
+
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import NavBarMobile from '../../components/Menus/NavBar/NavBarMobile';

@@ -1,9 +1,9 @@
-import InvoicesSection from "./Sections/InvoicesSection.tsx";
+import InvoicesSection from "./Sections/InvoicesSection";
 import { useOutletContext } from "react-router-dom";
-import CustosDetalhados from "./Sections/CustosDetalhados.tsx";
-import FleetSection from "./Sections/FleetSection.tsx";
-import { OverView } from "./Sections/OverView.tsx";
-import SuppliersSection from "./Sections/Supplierssection.tsx";
+import CustosDetalhados from "./Sections/CustosDetalhados";
+import FleetSection from "./Sections/FleetSection";
+import { OverView } from "./Sections/OverView";
+import SuppliersSection from "./Sections/Supplierssection";
 
 export default function Dashboard() {
   const isMobile = useOutletContext<boolean>();

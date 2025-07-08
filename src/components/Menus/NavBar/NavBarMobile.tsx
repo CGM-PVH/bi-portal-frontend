@@ -1,3 +1,5 @@
+//caminho: src/components/Menus/NavBar/NavBarMobile.tsx
+
 import { Menu, X } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 import getNavLinks from "../../../data/NavLinksData";

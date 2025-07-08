@@ -1,4 +1,4 @@
-// routes/Router.tsx
+//caminho: src/routes/Router.tsx
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Suspense } from "react";
 import getNavLinks from "../data/NavLinksData";

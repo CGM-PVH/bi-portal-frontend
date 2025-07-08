@@ -14,7 +14,7 @@ export default function Dashboard() {
   const showQuemFez = false;
 
   return (
-    <>
+    <div >
       {QuemFez("Jhonatan", showQuemFez)}
 
       <Suspense fallback={<div>Carregando visão geral...</div>}>
@@ -60,7 +60,7 @@ export default function Dashboard() {
           <SuppliersSection isMobile={isMobile} />
         </Suspense>
       )}
-    </>
+    </div>
   );
 }
 
@@ -68,7 +68,7 @@ const QuemFez = (text: string, show: boolean) => {
   return (
     <>
       {show ? (
-        <h1 className="bg-red-500 rounded-md my-5 p-2 justify-center font-bold">
+        <h1 className="bg-rose-200 rounded-md my-5 p-2 justify-center font-bold">
           {`Seção desenvolvida por ${text}`}
         </h1>
       ) : (
