@@ -16,7 +16,7 @@ type BarChartProps = {
   height: number
   width: number
   className:string
-};;
+};
 
 export const BarChartRecharts = ({
   data,

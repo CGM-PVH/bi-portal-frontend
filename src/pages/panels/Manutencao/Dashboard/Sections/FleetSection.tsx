@@ -76,7 +76,6 @@ const FleetBars = ({isMobile, className}:{isMobile:boolean, className:string}) =
     <div className={`${className} p-4 rounded-b-lg shadow-md ${isMobile? 'max-h-72':'max-h-96'} h-full overflow-y-auto flex items-center justify-center`}>
       <BarChartRecharts
         data={sampleDataBarChart}
-        title={""}
         showLegend={true}
         sizeLegend={12}
         sizeTitle={20}

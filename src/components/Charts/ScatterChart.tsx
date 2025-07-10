@@ -23,12 +23,8 @@ type ScatterDataset = {
 };
 
 type ScatterChartProps = {
-  title: string;
   data: ScatterDataset[];
-  height: number;
-  width: number;
   showLegend?: boolean;
-  sizeTitle?: number;
   colors: readonly string[];
   xAxisLabel?: string;
   yAxisLabel?: string;
@@ -39,6 +35,8 @@ type ScatterChartProps = {
   zRange?: [ number, number ];
   xTickInterval?: number;
   yTickInterval?: number;
+  xTickCount?: number;
+  yTickCount?: number;
   xTicks?: number[];
   yTicks?: number[];
   xData?: [ number, number ];
@@ -49,12 +47,8 @@ type ScatterChartProps = {
 };
 
 export const ScatterChartRecharts = ({
-  title,
   data,
-  height,
-  width,
   showLegend = true,
-  sizeTitle = 18,
   colors,
   xAxisLabel = 'x',
   yAxisLabel = 'y',
@@ -65,6 +59,8 @@ export const ScatterChartRecharts = ({
   zRange = [ 50, 150 ],
   xTickInterval,
   yTickInterval,
+  xTickCount,
+  yTickCount,
   xTicks,
   yTicks,
   xData,
@@ -73,10 +69,12 @@ export const ScatterChartRecharts = ({
   yTickMargin = 5,
   className
 }: ScatterChartProps) => {
-  const generateTicks = (min: number, max: number, interval: number): number[] => {
+  const generateTicks = (min: number, max: number, count: number): number[] => {
+    if (count <= 1) return [ min, max ];
+    const interval = (max - min) / (count - 1);
     const ticks = [];
-    for (let i = min; i <= max; i += interval) {
-      ticks.push(i);
+    for (let i = 0; i < count; i++) {
+      ticks.push(Number((min + i * interval).toFixed(2)));
     }
     return ticks;
   };
@@ -92,21 +90,22 @@ export const ScatterChartRecharts = ({
   const xDomain: [ number, number ] = [ xMin - xTickMargin, xMax + xTickMargin ];
   const yDomain: [ number, number ] = [ yMin - yTickMargin, yMax + yTickMargin ];
 
-  const xTickValues = xTicks ?? (xTickInterval ? generateTicks(xDomain[ 0 ], xDomain[ 1 ], xTickInterval) : undefined);
-  const yTickValues = yTicks ?? (yTickInterval ? generateTicks(yDomain[ 0 ], yDomain[ 1 ], yTickInterval) : undefined);
+  const xTickValues = xTicks
+    ?? (xTickInterval
+      ? generateTicks(xDomain[ 0 ], xDomain[ 1 ], Math.floor((xDomain[ 1 ] - xDomain[ 0 ]) / xTickInterval) + 1)
+      : (xTickCount ? generateTicks(xDomain[ 0 ], xDomain[ 1 ], xTickCount) : undefined));
 
+  const yTickValues = yTicks
+    ?? (yTickInterval
+      ? generateTicks(yDomain[ 0 ], yDomain[ 1 ], Math.floor((yDomain[ 1 ] - yDomain[ 0 ]) / yTickInterval) + 1)
+      : (yTickCount ? generateTicks(yDomain[ 0 ], yDomain[ 1 ], yTickCount) : undefined));
 
   return (
     <div
       className={`flex flex-col items-center justify-center ${className}`}
-      style={{ width, height }}
     >
-      <p className="font-semibold pt-2" style={{ fontSize: sizeTitle }}>
-        {title}
-      </p>
-
       <ResponsiveContainer width="100%" height="100%">
-        <ScatterChart margin={{ top: 5, right: 10, bottom: 15, left: 15 }}>
+        <ScatterChart margin={{ top: 5, right: 20, bottom: 15, left: 50 }}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             type="number"

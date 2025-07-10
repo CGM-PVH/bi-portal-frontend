@@ -21,9 +21,7 @@ export default function Dispersal() {
   return (
     <>
       {/* Título */}
-      <h2 className="text-xl font-semibold bg-lime-500 rounded-t-md p-2">
-        Dispersão KM/Horímetro x Custo
-      </h2>
+      
 
       {/* Grid estilo cards */}
       <div className="grid grid-cols-1 gap-4">
