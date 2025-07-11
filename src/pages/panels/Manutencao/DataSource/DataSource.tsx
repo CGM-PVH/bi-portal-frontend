@@ -1,5 +1,5 @@
-import DataPreview from "./sections/DataPreview.tsx";
-import Overview from "./sections/Overview.tsx";
+import DataPreview from "./sections/DataPreview";
+import Overview from "./sections/Overview";
 
 export default function DataSource() {
   return (

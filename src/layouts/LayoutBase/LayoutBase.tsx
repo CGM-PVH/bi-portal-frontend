@@ -8,7 +8,7 @@ import useIsMobile from '../../hooks/useIsMobile';
 
 
 export default function LayoutBase() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const externalSetIsOpen = (state = !isOpen) => {
     setIsOpen(state);
   }
@@ -26,16 +26,15 @@ export default function LayoutBase() {
       ) : (
         <SideBar isOpen={isOpen} setIsOpen={externalSetIsOpen} />
       )}
-      <main
-        className={`flex flex-col mt-4 transition-all duration-500 ease-in-out flex-grow ${isMobile ? "mt-4 mx-5 mb-8" : isOpen ? "ml-[314px] mr-10" : "ml-24 mr-14"
-          }`}
-      >
-        {/* Red Label at the top page with a message explaining there is not a real data, just random data sample */}
-        <div className='bg-red-500 text-white p-4 rounded-md mb-4'>
-          <h1 className='text-center font-bold'>Atenção: Esta página contém dados fictícios para demonstração de layout da página.</h1>
+      <main className={`flex flex-col mt-4 transition-all duration-450 ease-in-out ${isMobile ? "mt-4 mx-5 mb-8" : isOpen ? "ml-[314px] mr-10" : "ml-24 mr-14"}`}>
+        <div className="w-full max-w-[1600px] mx-auto px-4">
+          <div className='bg-red-500 text-white p-4 rounded-md mb-4'>
+            <h1 className='text-center font-bold'>Atenção: Esta página contém dados fictícios para demonstração de layout da página.</h1>
+          </div>
+          <Outlet context={isMobile as boolean} />
         </div>
-        <Outlet context={isMobile as boolean} />
       </main>
+
     </div>
   );
 }
