@@ -1,3 +1,4 @@
+// src/data/dataCharts/Supplier/suppliersChartsData.ts
 export const suppliersBarChartData = [
   { label: "Janeiro", vendas: 300, lucro: 240, margemErro: 20 },
   { label: "Fevereiro", vendas: 350, lucro: 221, margemErro: 40 },

@@ -1,3 +1,4 @@
+// src/components/Menus/SideBar/TitleSidebar.tsx
 import { X } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { getPanelTitle } from "../../../utils/getPanelTitle";

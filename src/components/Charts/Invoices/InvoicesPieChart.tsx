@@ -1,4 +1,4 @@
-//Gráfico de pizza
+// ./src/components/Charts/Invoices/InvoicesPieChart.tsx
 import { PieChart, Pie, Tooltip, Cell, ResponsiveContainer } from "recharts";
 import { invoicesPieData, PIE_COLORS } from "../../../data/dataCharts/invoices/InvoicesPieData";
 

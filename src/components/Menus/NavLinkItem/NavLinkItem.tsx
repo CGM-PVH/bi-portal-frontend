@@ -1,3 +1,4 @@
+//caminho: src/components/Menus/NavLinkItem/NavLinkItem.tsx
 import { NavLink } from 'react-router-dom';
 
 interface NavLinkItemProps {
@@ -6,7 +7,7 @@ interface NavLinkItemProps {
   icon: React.ReactNode;
   isMenuOpen: boolean;
 }
-export const NavLinkItem = ({path, title, icon, isMenuOpen}:NavLinkItemProps) => {
+export const NavLinkItem = ({ path, title, icon, isMenuOpen }: NavLinkItemProps) => {
 
   const isActive = window.location.pathname === path;
   return (
@@ -22,8 +23,8 @@ export const NavLinkItem = ({path, title, icon, isMenuOpen}:NavLinkItemProps) =>
     >
       <span className="text-xl">{icon}</span>
       <span className={`transition-transform ${isActive ? "scale-105" : "scale-100"}`}>
-              {title}
-            </span>
+        {title}
+      </span>
     </NavLink>
   );
 }

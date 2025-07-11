@@ -1,3 +1,4 @@
+// src/components/Charts/Suppliersection/SuppliersBarChart.tsx
 import React, { Suspense } from 'react';
 import { suppliersBarChartData } from '../../../data/dataCharts/Supplier/suppliersChartsData';
 import type { SuppliersBarChartProps } from '../../../data/dataCharts/Supplier/suppliersTypes';

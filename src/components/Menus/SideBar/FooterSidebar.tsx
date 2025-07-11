@@ -1,3 +1,4 @@
+//caminho: src/components/Menus/SideBar/FooterSidebar.tsx
 export default function FooterSidebar() {
   return (
     <div className="absolute bottom-0 left-0 w-full bg-yellow-400 text-black px-4 py-2 text-sm flex items-center gap-2">

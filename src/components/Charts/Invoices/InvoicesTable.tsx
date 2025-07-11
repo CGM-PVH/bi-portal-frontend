@@ -1,4 +1,4 @@
-//Tabela de OS sem NF
+//local: src/components/Charts/Invoices/InvoicesTable
 import { invoicesTableData } from "../../../data/dataCharts/invoices/InvoicesTableData";
 
 export default function InvoicesTable() {

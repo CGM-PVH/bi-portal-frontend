@@ -1,4 +1,4 @@
-// Gráfico de barras
+// ./src/components/Charts/Invoices/InvoicesBarChart.tsx
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import { invoicesBarData } from "../../../data/dataCharts/invoices/InvoicesBarData";
 

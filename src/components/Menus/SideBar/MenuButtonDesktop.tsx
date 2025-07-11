@@ -1,3 +1,4 @@
+//caminho: src/components/Menus/SideBar/MenuButtonDesktop.tsx
 import { Menu } from "lucide-react";
 export default function MenuButtonDesktop({
   openSideBar,

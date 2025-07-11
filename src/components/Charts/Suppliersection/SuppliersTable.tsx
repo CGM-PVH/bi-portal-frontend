@@ -1,3 +1,4 @@
+// src/components/Charts/Suppliersection/SuppliersTable.tsx
 import React, { Suspense } from 'react';
 import { suppliersTableData } from '../../../data/dataCharts/Supplier/mockSuppliersData';
 import type { SuppliersTableProps } from '../../../data/dataCharts/Supplier/suppliersTypes';

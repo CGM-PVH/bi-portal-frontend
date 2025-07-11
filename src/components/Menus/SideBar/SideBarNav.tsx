@@ -1,3 +1,4 @@
+//caminho: src/components/Menus/SideBar/SideBarNav.tsx
 import { useLocation } from 'react-router-dom';
 import getNavLinks from '../../../data/NavLinksData';
 import { NavLinkItem } from "../NavLinkItem/NavLinkItem";

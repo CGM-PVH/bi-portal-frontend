@@ -1,3 +1,4 @@
+// src/components/Charts/Suppliersection/SuppliersHeader.tsx
 import React from 'react';
 
 export const SuppliersHeader: React.FC = () => {

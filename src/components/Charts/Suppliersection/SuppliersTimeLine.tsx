@@ -1,3 +1,4 @@
+// src/components/Charts/Suppliersection/SuppliersTimeLine.tsx
 import React, { Suspense } from 'react';
 import type { SuppliersTimeLineProps } from '../../../data/dataCharts/Supplier/suppliersTypes';
 import { suppliersLineChartData } from '../../../data/dataCharts/Supplier/suppliersChartsData';

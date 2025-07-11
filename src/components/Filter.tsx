@@ -1,3 +1,4 @@
+// src/components/Filter.tsx
 type FilterProps = {
   secretarias?: string[];
   tiposOS?: string[];

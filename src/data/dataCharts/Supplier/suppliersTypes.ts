@@ -1,3 +1,4 @@
+//caminho: src/data/dataCharts/Supplier/suppliersTypes.ts
 export interface SuppliersProps {
   isMobile: boolean;
 }

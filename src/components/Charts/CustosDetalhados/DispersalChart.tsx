@@ -1,3 +1,4 @@
+// src/components/Charts/CustosDetalhados/DispersalChart.tsx
 import { memo } from "react";
 import {
   XAxis,

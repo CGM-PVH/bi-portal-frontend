@@ -1,3 +1,4 @@
+// ./src/components/Charts/CustosDetalhados/LineChart.tsx
 import { memo, useMemo } from "react";
 import {
   CartesianGrid,

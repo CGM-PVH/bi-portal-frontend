@@ -1,3 +1,4 @@
+// ./src/components/Charts/CustosDetalhados/AreaChart.tsx
 import { memo, useMemo } from 'react';
 import {
   Area,
