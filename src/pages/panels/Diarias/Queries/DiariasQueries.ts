@@ -9,66 +9,67 @@
  * Inclui KPIs, dados para gráficos, opções de filtros dinâmicos e a primeira página da tabela.
  * O objetivo é carregar o estado inicial do painel com uma única requisição.
  */
-export const GET_DIARIAS_DASHBOARD_DATA_QUERY = `
-  query Diarias{
-  getDiarias {
-    department
-    budgetUnit
-    action
-    expensePlan
-    resourceSource
-    expenseType
-    payment
-    paymentDate
-    settlement
-    commitment
-    employee
-    history
-    processNumber
-    defaultDate
-    delayDays
-    approvedDate
-    canceledDate
-    amountToApprove
-    amountApproved
-    amountCanceled
-    amountGranted
-    balance
+export const GET_DIARIAS_TABLE_DATA_QUERY = `
+  query Diarias(
+  $limit: Int
+  $offset: Int
+  $sortBy: String
+  $sortDirection: String
+  $filters: DiariasFilters
+	$tableFilters: DiariasTableFilters
+){
+  getDiariasTable(
+    limit: $limit
+    offset: $offset
+    sortBy: $sortBy
+    sortDirection: $sortDirection
+    filters:$filters
+    tableFilters:$tableFilters) {
+		data {
+      departmentCode
+      grantedAmount
+      status
+      employee
+      approvalDate
+      processNumber
+    }
+    totalCount
   }
-  getDiariasKpi {
-    totalGasto
+}
+`;
+
+export const GET_DIARIAS_KPIS_DATA_QUERY = `
+  query Diarias(
+  $filters: DiariasFilters
+){
+  getDiariasKpi(filters: $filters) {
+    totalConcedido
+    totalAprovado
     totalDiarias
   }
-  getDiariasCharts {
-    GastoMesDiaria {
-      month
+  
+  getDiariasLastUpdate
+}
+`;
+
+export const GET_DIARIAS_CHARTS_DATA_QUERY = `
+  query Diarias(
+  $filters: DiariasFilters
+){
+  getDiariasCharts(filters: $filters) {
+    GastoOrgaoDiaria {
+      name
       total
-    }
-    OrgaoGastoDiaria {
+    },
+    GastoMesDiaria {
+      name
+      total
+    },
+    GastoFuncionarioDiaria {
       name
       total
     }
-  }
-  getDiariasFiltersOptions {
-    department {
-			value
-      label
-    }
-    status {
-			value
-      label
-    }
-    processNumber {
-			value
-      label
-    }
-    paymentDate {
-			value
-      label
-    }
-  }
-  getDiariasTableCount
-  getDiariasLastUpdate
+	}
 }
 `;
 // =================================================
@@ -79,6 +80,30 @@ export const GET_DIARIAS_DASHBOARD_DATA_QUERY = `
  * @description Query para buscar as opções dinâmicas para os filtros do dashboard de manutenção.
  * É chamada toda vez que um filtro é alterado para atualizar as opções dos outros.
  */
+
+export const GET_DIARIAS_FILTER_OPTIONS_QUERY = `
+query GetDiariasDashboardData($filters: DiariasFiltersOptions) {
+  getDiariasFiltersOptions(filters: $filters) {
+    departmentCode {
+      value
+      label
+    }
+    status {
+      value
+      label
+    }
+    processNumber {
+      value
+      label
+    }
+    employee {
+      value
+      label
+    }
+  }
+}
+`;
+
 
 /**
  * @description Query para baixar o relatório completo e detalhado das manutenções.

@@ -12,12 +12,11 @@ const formatBRL = (v: any) =>
   new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(Number(v || 0));
 
 const formatCell = (value: any, dataType?: 'CURRENCY' | 'DATE'): ReactNode => {
-  if (value === null || typeof value === 'undefined' || value === '') return 'N/A';
+  if (value === null ||  value === '') return 'N/A';
   switch (dataType) {
     case 'CURRENCY':
       return formatBRL(value);
     case 'DATE':
-      // paymentDate costuma vir como ISO; não invente timezone local aqui
       return new Date(value).toLocaleDateString('pt-BR', { timeZone: 'UTC' });
     default:
       return value;
@@ -28,7 +27,7 @@ const formatCell = (value: any, dataType?: 'CURRENCY' | 'DATE'): ReactNode => {
 const columns: TableColumn<TableDataItem>[] = [
   {
     header: 'Secretaria',
-    accessor: 'department',
+    accessor: 'departmentCode',
     sortable: true,
     isFilterable: true,
   },
@@ -46,22 +45,22 @@ const columns: TableColumn<TableDataItem>[] = [
   },
   {
     header: 'Concedido',
-    accessor: 'amountGranted',
+    accessor: 'grantedAmount',
     sortable: true,
     isFilterable: true,
-    render: (item) => formatCell(item.amountGranted, 'CURRENCY'),
+    render: (item) => formatCell(item.grantedAmount, 'CURRENCY'),
   },
   {
-    header: 'Aprovado',
-    accessor: 'amountApproved',
+    header: 'Data de Solicitação',
+    accessor: 'approvalDate',
     sortable: true,
     isFilterable: true,
-    render: (item) => formatCell(item.amountApproved, 'CURRENCY'),
+    render: (item) => item.approvalDate,
   },
   {
-    header: 'Histórico',
-    accessor: 'history',
-    sortable: false,
+    header: 'Status',
+    accessor: 'status',
+    sortable: true,
     isFilterable: true,
   },
 ];
